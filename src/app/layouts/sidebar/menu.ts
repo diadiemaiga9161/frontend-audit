@@ -10,7 +10,7 @@ export const MENU: MenuItem[] = [
         id: 11,
         label: 'Dashboards',
         icon: 'bx-home-circle',
-        link: '/accueil1',
+        link: '/',
         
     },
 
@@ -54,8 +54,8 @@ export const MENU: MenuItem[] = [
             },
             {
                 id: 3,
-                label: 'Statistiquesbeta',
-                link: '/statistiquesbeta',
+                label: 'Statistiques',
+                link: '/statistiques',
                 parentId: 2
             },
             {
@@ -97,7 +97,7 @@ export const MENU: MenuItem[] = [
         id: 10,
         label: 'Gestion-Profile',
         icon: 'bx bx-user-circle',
-        link: '/profile',
+        link: '/profil',
     },
 ];
 

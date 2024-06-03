@@ -43,7 +43,7 @@ const linewithDataChart: ChartType = {
         size: 6
     },
     xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Janvier', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
         title: {
             text: 'Month'
         }   
@@ -179,8 +179,8 @@ const dashedLineChart: ChartType = {
         }
     },
     xaxis: {
-        categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-            '10 Jan', '11 Jan', '12 Jan'
+        categories: ['01 Janvier', '02 Janvier', '03 Janvier', '04 Janvier', '05 Janvier', '06 Janvier', '07 Janvier', '08 Janvier', '09 Janvier',
+            '10 Janvier', '11 Janvier', '12 Janvier'
         ],
     },
     tooltip: {

@@ -6,10 +6,13 @@
       <div class="card">
         <div class="card-body border-bottom">
           <div class="d-flex align-items-center">
-            <h5 class="mb-0 card-title flex-grow-1">Jobs Lists</h5>
+            <h5 class="mb-0 card-title flex-grow-1">Liste des Audités</h5>
+            <div class="col-xxl-4 col-lg-6" style="padding-right: 20px;">
+              <input type="search" class="form-control" id="searchInput" placeholder="Search for ...">
+            </div> 
             <div class="flex-shrink-0 d-flex gap-1">
-              <a href="javascript:void(0);" class="btn btn-primary">Add New Job</a>
-              <a href="javascript:void(0);" class="btn btn-light"><i class="mdi mdi-refresh"></i></a>
+              <a href="/ajouter-audites" class="btn btn-primary">Nouvel audité</a>
+              <!-- <a href="javascript:void(0);" class="btn btn-light"><i class="mdi mdi-refresh"></i></a> -->
               <div class="dropdown d-inline-block" dropdown>
                 <button type="menu" class="btn btn-success" id="*dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" dropdownToggle><i class="mdi mdi-dots-vertical"></i></button>
                 <ul class="dropdown-menu dropdown-menu dropdown-menu-end show" aria-labelledby="*dropdownMenuButton1" *dropdownMenu>
@@ -23,10 +26,7 @@
         </div>
         <div class="card-body border-bottom">
           <div class="row g-3">
-            <div class="col-xxl-4 col-lg-6">
-              <input type="search" class="form-control" id="searchInput" placeholder="Search for ...">
-            </div>
-            <div class="col-xxl-2 col-lg-6">
+            <!-- <div class="col-xxl-2 col-lg-6">
               <select class="form-select"  id="idStatus" aria-label="Default select example">
                 <option value="">Select Status</option>
                 <option value="Active">Active</option>
@@ -42,47 +42,46 @@
                 <option value="Internship">Internship</option>
                 <option value="Freelance">Freelance</option>
               </select>
-            </div>
-            <div class="col-xxl-2 col-lg-4">
+            </div> -->
+            <!-- <div class="col-xxl-2 col-lg-4">
               <div id="datepicker1">
                 <input type="text" placeholder="Datepicker" class="form-control " bsDatepicker >
 
-              </div><!-- input-group -->
-            </div>
-            <div class="col-xxl-2 col-lg-4">
+              </div>
+            </div> -->
+            <!-- <div class="col-xxl-2 col-lg-4">
               <button type="button" class="btn btn-soft-secondary w-100"><i class="mdi mdi-filter-outline align-middle"></i> Filter</button>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="card-body">
 
           <div class="table-responsive">
-            <table class="table align-middle dt-responsive nowrap w-100 table-check" id="job-list">
+            <table class="table align-middle dt-responsive nowrap w-90 table-check" id="liste-audites">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
-                  <th scope="col">Job Title</th>
+                  <th scope="col">Nom</th>
+                  <th scope="col">Site</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of lists">
+                <tr>
                   <th scope="row">01</th>
-                  <td>{{data.title}}</td>
-                  <td><span class="badge badge-soft-{{data.type_color}}" [ngClass]="{'badge-soft-success': data.type === 'Full Time','badge-soft-danger': data.type === 'Part Time','badge-soft-info': data.type === 'Freelance','badge-soft-warning': data.type === 'Internship'}">{{data.type}}</span></td>
-                  <td>{{data.posted_date}}</td>
-                  <td>{{data.last_date}}</td>
-                  <td><span class="badge" [ngClass]="{ 'bg-success': data.status === 'Active', 'bg-info': data.status === 'New', 'bg-danger': data.status === 'Close'}">{{data.status}}</span></td>
+                  <td>Amadou maiga</td>
+                  <td>Awd</td>
+                  <!-- <td><span class="badge" >status</span></td> -->
                   <td>
                     <ul class="list-unstyled hstack gap-1 mb-0">
-                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
                         <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
                       </li>
-                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                        <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" (click)="editDataGet(data.id,content)"><i class="mdi mdi-pencil-outline"></i></a>
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                        <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
                       </li>
-                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                        <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger" (click)="delete($event)"><i class="mdi mdi-delete-outline"></i></a>
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                        <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
                       </li>
                     </ul>
                   </td>
@@ -92,7 +91,7 @@
           </div>
           <div class="row justify-content-between align-items-center">
             <div class="col-auto me-auto">
-              <p class="text-muted mb-0">Showing <b></b> to <b></b> of <b></b> entries</p>
+              <p class="text-muted mb-0">Audites <b></b> to <b></b> of <b></b> entreprise</p>
             </div>
             <div class="col-auto">
               <div class="text-md-right float-md-end pagination-rounded">
@@ -274,42 +273,4 @@
   </form>
 </ng-template>
 <!--End Modal -->
-  <div class="container" style="justify-content: right;">
-    <button type="button" style="" class="btn btn-primary w-sm">
-      <i class="mdi mdi-pencil d-block font-size-16"></i> Nouvelle Audites
-   </button>  
-  </div>
-<br>
-
-  <div class="table-responsive">
-  <br>  
-  <table class="table table-centered table-nowrap">
-    <thead>
-      <tr>
-        <th class="align-middle">#</th>
-        <th class="align-middle">Audites</th>
-        <th class="align-middle">Site</th>
-        <!-- <th class="align-middle">Action</th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td >Larry the Bird</td>
-        <td>Otto</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
  

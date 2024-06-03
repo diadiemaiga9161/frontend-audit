@@ -38,6 +38,11 @@ import { AuditsCoursComponent } from './pages/audits-cours/audits-cours.componen
 import { ReferentielsComponent } from './pages/referentiels/referentiels.component';
 import { StatistiquesbetaComponent } from './pages/statistiquesbeta/statistiquesbeta.component';
 import { CrossReferentielsComponent } from './pages/cross-referentiels/cross-referentiels.component';
+import { ProfilComponent } from './pages/profil/profil.component';
+import { AjouterAuditeComponent } from './pages/ajouter-audite/ajouter-audite.component';
+import { AjouterCampagneComponent } from './pages/ajouter-campagne/ajouter-campagne.component';
+import { AjouterAuditComponent } from './pages/ajouter-audit/ajouter-audit.component';
+import { AjouterReferentielsComponent } from './pages/ajouter-referentiels/ajouter-referentiels.component';
 
 if (environment.defaultauth === 'firebase') {
   initFirebaseBackend(environment.firebaseConfig);
@@ -63,6 +68,11 @@ export function createTranslateLoader(http: HttpClient): any {
     ReferentielsComponent,
     StatistiquesbetaComponent,
     CrossReferentielsComponent,
+    ProfilComponent,
+    AjouterAuditeComponent,
+    AjouterCampagneComponent,
+    AjouterAuditComponent,
+    AjouterReferentielsComponent,
   ],
   imports: [
     BrowserModule,

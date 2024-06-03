@@ -1,0 +1,46 @@
+ <!-- end row -->
+ <div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Nouvel Campagne</h5>
+                <!-- <p class="card-title-desc">Create beautifully simple form labels that float over your input fields.</p> -->
+
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingnameInput" placeholder="Enter Nom de l'audites">
+                        <label for="floatingnameInput">Nom de l'audites</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <label for="floatingnameInput">Description</label>
+                            <div>
+                                <textarea formControlName="textarea" class="form-control" rows="5"
+                                 ></textarea>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                                <option selected>Audites</option>
+                                <option value="1">AWD</option>
+                                <option value="2">ODC</option>
+                            </select>
+                            <label for="floatingSelectGrid">Ajout des Audites</label>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-primary w-md">Envoyer</button>
+                    </div>
+                </form>
+            </div>
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->

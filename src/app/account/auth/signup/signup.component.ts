@@ -34,6 +34,26 @@ export class SignupComponent implements OnInit {
     });
   }
 
+
+  type = true;
+  type1 = true;
+  type2 = true;
+
+
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType() {
+    this.type = !this.type;
+  }
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType1() {
+    this.type1 = !this.type1;
+  }
+
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType2() {
+    this.type2 = !this.type2;
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.signupForm.controls; }
 

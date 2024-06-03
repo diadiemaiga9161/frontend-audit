@@ -1,1 +1,110 @@
-<p>audits-cours works!</p>
+<div class="container-fluid">
+    <!-- <app-page-title title="Advanced Table" [breadcrumbItems]="breadCrumbItems"></app-page-title> -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Audits en cours</h4>
+            <p class="card-sub-title">
+            </p>
+            <div class="row mb-md-2">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="tickets-table_length"><label
+                    class="d-inline-flex align-items-center">Show
+                    <select name="tickets-table_length" aria-controls="tickets-table" name="pageSize"
+                      class="form-control form-control-sm mx-2">
+                      <option >10</option>
+                      <option >25</option>
+                      <option >50</option>
+                      <option >100</option>
+                    </select> entries</label></div>
+              </div>
+              <!-- Search -->
+              <div class="col-sm-12 col-md-6">
+                <div id="tickets-table_filter" class="dataTables_filter text-md-end"><label
+                    class="d-inline-flex align-items-center">Search:
+                    <input type="text" name="searchTerm" class="form-control form-control-sm ms-2"
+                      aria-controls="tickets-table" ></label></div>
+              </div>
+              <!-- End search -->
+            </div>
+            <!-- Table -->
+            <div class="table-responsive">
+              <table id="basic-datatable"
+                class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th sortable="name" >Name</th>
+                    <th sortable="position" >Position</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01</td>
+                    <td>Nom</td>
+                    <td>te</td>
+                    <td>
+                        <ul class="list-unstyled hstack gap-1 mb-0">
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
+                            <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                            <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                            <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
+                          </li>
+                        </ul>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- End table -->
+            <div class="row justify-content-md-between align-items-md-center mt-2">
+              <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+                </div>
+              </div>
+              <!-- Pagination -->
+              <div class="col-sm-12 col-md-5">
+                <div class="text-md-right float-md-end pagination-rounded">
+                  <!-- <pagination [totalItems]="total$ | async" [(ngModel)]="service.page">
+                  </pagination> -->
+                </div>
+              </div>
+              <!-- End Pagination -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #content role="document" let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Modal Heading</h5>
+      <button type="button" class="close" aria-hidden="true" (click)="modal.dismiss('Cross click')">×</button>
+    </div>
+    <div class="modal-body">
+      <h5>Overflowing text to show scroll behavior</h5>
+      <p>Cras mattis consectetur purus sit amet fermentum.
+        Cras justo odio, dapibus ac facilisis in,
+        egestas eget quam. Morbi leo risus, porta ac
+        consectetur ac, vestibulum at eros.</p>
+      <p>Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Vivamus sagittis lacus vel
+        augue laoreet rutrum faucibus dolor auctor.</p>
+      <p>Aenean lacinia bibendum nulla sed consectetur.
+        Praesent commodo cursus magna, vel scelerisque
+        nisl consectetur et. Donec sed odio dui. Donec
+        ullamcorper nulla non metus auctor
+        fringilla.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </ng-template>
+  

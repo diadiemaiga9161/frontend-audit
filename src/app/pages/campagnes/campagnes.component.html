@@ -1,1 +1,69 @@
-<p>campagnes works!</p>
+<div class="col-lg-12">
+    <div class="card z-depth-3 ">
+        <div class="card-body">
+            <ul class="nav nav-pills nav-pills-primary nav-justified">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link px-4 active" data-bs-toggle="tab" href="#Campagne" role="tab"
+                        aria-selected="false" tabindex="1">
+                        <span class="d-block d-sm-none"><i class="fas fa-home">Mes-campagne</i></span>
+                        <span class="d-none d-sm-block">Mes-campagne</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content p-3">
+                <div class="tab-pane active show" id="Campagne" role="tabpanel">
+                    <h5 class="mb-3"></h5>
+                    <div class="flex-shrink-0 d-flex gap-1">
+                        <a href="/ajouter-campagne" class="btn btn-primary">Nouvelle campagne</a>
+                      </div>
+                      <br>
+                    <div class="table-responsive">
+                        <table id="basic-datatable"
+                          class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline">
+                          <thead>
+                            <tr>
+                              <th>Campagne_Id</th>
+                              <th sortable="name" >Contient des audits</th>
+                              <th sortable="position" >Titre</th>
+                              <th sortable="position" >Date_debut</th>
+                              <th sortable="position" >Protection</th>
+                              <th sortable="position" >Audits</th>
+                              <!-- <th>Actions</th> -->
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>01</td>
+                              <td>Nom</td>
+                              <td>Site_web</td>
+                              <td>25/10/2023</td>
+                              <td>Protege</td>
+                              <td>AWD</td>
+
+                              <!-- <td>
+                                  <ul class="list-unstyled hstack gap-1 mb-0">
+                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
+                                      <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
+                                    </li>
+                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                                      <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
+                                    </li>
+                                    <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
+                                    </li>
+                                  </ul>
+                                </td> -->
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                </div>
+                <div class="tab-pane show" id="audit" role="tabpanel">
+                    <div class="container mt-3 mb-10">
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>

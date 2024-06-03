@@ -1,1 +1,92 @@
-<p>gestion-audits works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Gestion des audites</h4>
+            <p class="card-title-desc">
+              <!-- Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code>
+              to make them scroll horizontally on small devices (under 768px). -->
+            </p>
+            <div class="flex-shrink-0 d-flex gap-1">
+                <a href="/ajouter-audit" class="btn btn-primary">Nouvel audit</a>
+              </div>
+            <div class="table-responsive">
+              <table class="table mb-0">
+                <thead>
+                  <tr>
+                    <th>Audit id</th>
+                    <th>Audites</th>
+                    <th>Referentiele</th>
+                    <th>Statut</th>
+                    <th>Taux conformite</th>
+                    <th>Non-conformite</th>
+                    <th>Date-creation</th>
+                    <th>Date debut</th>
+                    <th>Date fin</th>
+                    <th>Date conformite</th>
+                    <th>Action</th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Awd</td>
+                    <td>Ios/120/test</td>
+                    <td><span class="badge" style="color: rgb(255, 255, 255); font-size: 15px; background: #0d8ae3;">Statu</span></td>
+                    <td>------</td>
+                    <td>-----</td>
+                    <td>12/10/2023</td>
+                    <td>12/10/2024</td>
+                    <td>25/11/2024</td>
+                    <td>------</td>
+                    <td>
+                        <ul class="list-unstyled hstack gap-1 mb-0">
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
+                            <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                            <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                            <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
+                          </li>
+                        </ul>
+                      </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Awd</td>
+                    <td>Ios/120/test</td>
+                    <td><span class="badge" style="color: rgb(255, 255, 255); font-size: 15px; background: #0d8ae3;">Statu</span></td>
+                    <td>------</td>
+                    <td>-----</td>
+                    <td>12/10/2023</td>
+                    <td>12/10/2024</td>
+                    <td>25/11/2024</td>
+                    <td>------</td>
+                    <td>
+                        <ul class="list-unstyled hstack gap-1 mb-0">
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
+                            <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                            <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
+                          </li>
+                          <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                            <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
+                          </li>
+                        </ul>
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  

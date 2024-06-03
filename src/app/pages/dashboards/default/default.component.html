@@ -1,4 +1,3 @@
-<app-loader></app-loader>
 <div class="container-fluid">
     <!-- start page title -->
     <div class="row">
@@ -27,8 +26,10 @@
                     <div class="row">
                         <div class="col-7">
                             <div class="text-primary p-3">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p>Skote Dashboard</p>
+                                <h5 class="text-primary">Content de te revoir !
+                                </h5>
+                                <p>Tableau de bord audit
+                                </p>
                             </div>
                         </div>
                         <div class="col-5 align-self-end">
@@ -45,19 +46,18 @@
                             <h5 class="font-size-15 text-truncate">Mariam Telly</h5>
                             <p class="text-muted mb-0 text-truncate">Auditeur</p>
                         </div>
-
                         <div class="col-sm-8">
                             <div class="pt-4">
 
                                 <div class="row">
-                                    <div class="col-6">
+                                    <!-- <div class="col-6">
                                         <h5 class="font-size-15">125</h5>
                                         <p class="text-muted mb-0">Projet Audites</p>
                                     </div>
                                     <div class="col-6">
                                         <h5 class="font-size-15">1245</h5>
                                         <p class="text-muted mb-0">Audites en cours</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="mt-4">
                                     <a href="" class="btn btn-primary btn-sm"> Profile  <i class="mdi mdi-arrow-right ms-1"></i></a>
@@ -67,19 +67,22 @@
                     </div>
                 </div>
             </div>
+
+            
          <div class="card">
+            
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Monthly Earning</h4>
+                    <h4 class="card-title mb-4">Rapport</h4>
                     <div class="row">
                         <div class="col-sm-6">
-                            <p class="text-muted">This month</p>
-                            <h3>$34,252</h3>
+                            <p class="text-muted">Nombre de rapport telecharge </p>
+                            <h3>10</h3>
                             <p class="text-muted"><span class="text-success me-2"> 12% <i class="mdi mdi-arrow-up"></i>
-                                </span> From
-                                previous period</p>
+                                </span> 
+                            </p>
 
                             <div class="mt-4">
-                                <a href="" class="btn btn-primary btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                <a href="" class="btn btn-primary btn-sm">Voir plus<i class="mdi mdi-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -88,10 +91,10 @@
                             </apx-chart>
                         </div>
                     </div>
-                    <p class="text-muted mb-0">We craft digital, graphic and dimensional thinking.</p>
                 </div>
             </div> 
         </div>
+        
         <div class="col-xl-8">
             <!-- <div class="row">
                 <div *ngFor="let stat of statData" class="col-md-4">
@@ -99,7 +102,82 @@
                 </div>
             </div> -->
             <!-- end row -->
+            <div class="col-xl-16">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs me-3">
+                                        <span
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary font-size-18">
+                                            <i class="bx bxs-user-rectangle"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-14 mb-0">Audités</h5>
+                                </div>
+                                <div class="text-muted mt-4">
+                                    <h4>15 <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                    <!-- <div class="d-flex">
+                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                            class="ms-2 text-truncate">From previous period</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs me-3">
+                                        <span
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary font-size-18">
+                                            <i class="bx bxs-search"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-14 mb-0">Audits</h5>
+                                </div>
+                                <div class="text-muted mt-4">
+                                    <h4>4<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+    
+                                    <!-- <div class="d-flex">
+                                        <span class="badge badge-soft-warning font-size-12"> 0% </span> <span
+                                            class="ms-2 text-truncate">From previous period</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar-xs me-3">
+                                        <span
+                                            class="avatar-title rounded-circle bg-primary-subtle text-primary font-size-18">
+                                            <i class="bx bx-loader-circle"></i>
+                                        </span>
+                                    </div>
+                                    <h5 class="font-size-14 mb-0">Audit en cours</h5>
+                                </div>
+                                <div class="text-muted mt-4">
+                                    <h4>5<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                    <!-- <div class="d-flex">
+                                        <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                            class="ms-2 text-truncate">From previous period</span>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    
+                </div>
+                <!-- end row -->
+            </div>
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex flex-wrap">
@@ -107,13 +185,13 @@
                         <div class="ms-auto">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript: void(0);" [ngClass]="{'active': isActive === 'week'}" (click)="weeklyreport()">Week</a>
+                                    <a class="nav-link" href="javascript: void(0);" [ngClass]="{'active': isActive === 'week'}" (click)="weeklyreport()">Semaine</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript: void(0);" (click)="monthlyreport()" [ngClass]="{'active': isActive === 'month'}">Month</a>
+                                    <a class="nav-link" href="javascript: void(0);" (click)="monthlyreport()" [ngClass]="{'active': isActive === 'month'}">Mois</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="javascript: void(0);" (click)="yearlyreport()" [ngClass]="{'active': isActive === 'year'}">Year</a>
+                                    <a class="nav-link" href="javascript: void(0);" (click)="yearlyreport()" [ngClass]="{'active': isActive === 'year'}">Année</a>
                                 </li>
                             </ul>
                         </div>
@@ -124,6 +202,8 @@
             </div>
         </div>
     </div>
+
+    
     <!-- end row -->
 
     <!-- <div class="row">
@@ -327,9 +407,148 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Gestion des Audites en cours</h4>
-                    <app-transaction [transactions]="transactions"></app-transaction>
-                    <!-- end table -->
+                    <h4 class="card-title mb-4">Gestion des audits</h4>
+                    <div class="table-responsive mb-0">
+                        <table class="table table-centered table-nowrap">
+                          <thead class="table-light">
+                            <tr>
+                              <!-- <th style="width: 20px;">
+                                <div class="form-check font-size-16 align-middle">
+                                  <input class="form-check-input" type="checkbox" id="transactionCheck01">
+                                  <label class="form-check-label" for="transactionCheck01"></label>
+                                </div>
+                              </th> -->
+                              <th class="align-middle">Audit ID</th>
+                              <th class="align-middle">Audites</th>
+                              <th class="align-middle">Referentiels</th>
+                              <th class="align-middle">Status</th>
+                              <th class="align-middle">Taux-Conformite</th>
+                              <th class="align-middle">Non-conformite</th>
+                              <th class="align-middle">Date-creation</th>
+                              <th class="align-middle">Date-debut</th>
+                              <th class="align-middle">Date-fin</th>
+                              <th class="align-middle">Date-conformite</th>
+                              <th class="align-middle">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let data of transactions">
+                              <td>01
+                                <!-- <div class="form-check font-size-16">
+                                  <input class="form-check-input" type="checkbox" id="transactionCheck{{data.index}}">
+                                  <label class="form-check-label" for="transactionCheck{{data.index}}"></label>
+                                </div> -->
+                              </td>
+                              <td>
+                                <a href="javascript: void(0);" class="text-body fw-bold">{{data.id}}</a>
+                              </td>
+                              <td>{{data.name}}</td>
+                              <td>{{data.date}}</td>
+                              <td>{{data.total}}</td>
+                              <td>{{data.total}}</td>
+                              <td>{{data.total}}</td>
+                              <td>{{data.total}}</td>
+                              <td>
+                                <span class="badge badge-pill badge-soft-success font-size-11" [ngClass]=" { 'badge-soft-danger': data.status === 'Chargeback',
+                                              'badge-soft-warning':data.status === 'Refund' }">{{data.status}}</span>
+                              </td>
+                              <td>
+                                <i class="fab {{data.payment[0]}} me-1"></i>
+                                {{data.payment[1]}}
+                              </td>
+                              <td>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary btn-sm btn-rounded" (click)="content.show()">View
+                                  Details</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      
+                        <div bsModal #content="bs-modal" class="modal fade" tabindex="-1">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title mt-0">Order Details</h5>
+                                <button type="button" class="btn-close" aria-hidden="true" (click)="content?.hide()"></button>
+                              </div>
+                              <div class="modal-body">
+                                <p class="mb-2">
+                                  Product id:
+                                  <span class="text-primary">#SK2540</span>
+                                </p>
+                                <p class="mb-4">
+                                  Billing Name:
+                                  <span class="text-primary">Neal Matthews</span>
+                                </p>
+                                <div class="table-responsive">
+                                  <table class="table table-centered table-nowrap">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Price</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row">
+                                          <div>
+                                            <img src="assets/images/product/img-7.png" alt class="avatar-sm" />
+                                          </div>
+                                        </th>
+                                        <td>
+                                          <div>
+                                            <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
+                                            <p class="text-muted mb-0">$ 225 x 1</p>
+                                          </div>
+                                        </td>
+                                        <td>$ 255</td>
+                                      </tr>
+                                      <tr>
+                                        <th scope="row">
+                                          <div>
+                                            <img src="assets/images/product/img-4.png" alt class="avatar-sm" />
+                                          </div>
+                                        </th>
+                                        <td>
+                                          <div>
+                                            <h5 class="text-truncate font-size-14">Phone patterned cases</h5>
+                                            <p class="text-muted mb-0">$ 145 x 1</p>
+                                          </div>
+                                        </td>
+                                        <td>$ 145</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          <h6 class="m-0">Sub Total:</h6>
+                                        </td>
+                                        <td>$ 400</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          <h6 class="m-0">Shipping:</h6>
+                                        </td>
+                                        <td>Free</td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan="2">
+                                          <h6 class="m-0">Total:</h6>
+                                        </td>
+                                        <td>$ 400</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button class="btn btn-secondary" (click)="content.hide()">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end table -->                    <!-- end table -->
                 </div>
             </div>
         </div>

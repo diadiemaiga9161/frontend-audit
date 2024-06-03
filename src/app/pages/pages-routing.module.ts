@@ -15,6 +15,11 @@ import { AuditsCoursComponent } from './audits-cours/audits-cours.component';
 import { ReferentielsComponent } from './referentiels/referentiels.component';
 import { StatistiquesbetaComponent } from './statistiquesbeta/statistiquesbeta.component';
 import { CrossReferentielsComponent } from './cross-referentiels/cross-referentiels.component';
+import { ProfilComponent } from './profil/profil.component';
+import { AjouterAuditeComponent } from './ajouter-audite/ajouter-audite.component';
+import { AjouterCampagneComponent } from './ajouter-campagne/ajouter-campagne.component';
+import { AjouterAuditComponent } from './ajouter-audit/ajouter-audit.component';
+import { AjouterReferentielsComponent } from './ajouter-referentiels/ajouter-referentiels.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'dashboard' },
@@ -22,16 +27,22 @@ const routes: Routes = [
     path: "",
     component: DefaultComponent
   },
-  { path: 'accueil1', component: DefaultComponent },
+  { path: '', component: DefaultComponent },
+  {path: 'profil', component: ProfilComponent},
+  {path: 'ajouter-audites', component: AjouterAuditeComponent},
+  {path: 'ajouter-audit', component: AjouterAuditComponent},
+  {path: 'ajouter-referentiels', component: AjouterReferentielsComponent },
+  {path: 'ajouter-campagne', component: AjouterCampagneComponent},
   { path: 'calendar', component: CalendarComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'crossreferentiels', component: CrossReferentielsComponent },
   { path: 'referentiels', component: ReferentielsComponent },
-  { path: 'statistiquesbeta', component: StatistiquesbetaComponent },
+  { path: 'statistiques', component: StatistiquesbetaComponent },
   { path: 'audits-cours', component: AuditsCoursComponent },
   { path: 'echelles', component: EchellesComponent },
   { path: 'gestionsaudites',component: GestionAuditsComponent},
-  { path: 'campagnes', component: CampagnesComponent },
+  // { path: 'campagnes', component: CampagnesComponent },
+  { path: 'campagnes', component: CampagnesComponent},
   { path: 'profile' , component: GestionProfileComponent },
   { path: 'accueil', component: AccueilComponent },
   { path: 'audites', component: AuditesComponent},

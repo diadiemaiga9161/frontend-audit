@@ -6,8 +6,8 @@ import { AuthfakeauthenticationService } from '../../../core/services/authfake.s
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +20,9 @@ import { environment } from '../../../../environments/environment';
  */
 export class LoginComponent implements OnInit {
 
+ /**
+ * Login component
+ */
   loginForm: UntypedFormGroup;
   submitted:any = false;
   error:any = '';
@@ -43,6 +46,24 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     // tslint:disable-next-line: no-string-literal
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+  type = true;
+  type1 = true;
+  type2 = true;
+
+
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType() {
+    this.type = !this.type;
+  }
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType1() {
+    this.type1 = !this.type1;
+  }
+
+  //METHODE PERMETTANT DE CHANGER LE TYPE DE L'ICON EYE DANS LE CHAMP MOT DE PASSE
+  changeType2() {
+    this.type2 = !this.type2;
   }
 
   // convenience getter for easy access to form fields

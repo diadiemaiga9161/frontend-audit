@@ -11,41 +11,15 @@ import { Orders } from '../crypto/orders/orders.model';
   styleUrls: ['./campagnes.component.scss']
 })
 export class CampagnesComponent {
+  selectedTab: string = 'profil'
 
-  breadCrumbItems: Array<{}>;
 
-  ordersData: Orders[];
-
-  orders$: Observable<Orders[]>;
-  total: Observable<number>;
-  @ViewChildren(OrderSortableService) headers: QueryList<OrderSortableService>;
-
-  constructor(public service: OrderService) {
-    this.orders$ = service.orders$;
-    this.total = service.total$;
+  changeTab(tab: string) {
+    this.selectedTab = tab;
   }
 
-  ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Crypto' }, { label: 'Orders', active: true }];
-
-    this.ordersData = ordersData;
-  }
-
-  /**
-  * Sort table data
-  * @param param0 sort the column
-  *
-  */
-  onSort({ column, direction }: SortEvent) {
-  
-    // resetting other headers
-    this.headers.forEach(header => {
-      if (header.sortable !== column) {
-        header.direction = '';
-      }
-    });
-    this.service.sortColumn = column;
-    this.service.sortDirection = direction;
+  isTabActive(tab: string): boolean {
+    return this.selectedTab === tab;
   }
 
 }

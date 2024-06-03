@@ -7,8 +7,8 @@
             <div class="row">
               <div class="col-7">
                 <div class="text-primary p-4">
-                  <h5 class="text-primary">Free Register</h5>
-                  <p>Get your free Skote account now.</p>
+                  <h5 class="text-primary">Inscription gratuite</h5>
+                  <p>Obtenez votre compte gratuit maintenant.</p>
                 </div>
               </div>
               <div class="col-5 align-self-end">
@@ -27,26 +27,144 @@
               </a>
             </div>
             <div class="p-2">
+              <form>
+                <!-- <div class="mb-3">
+                    <label for="formrow-firstname-input">First name</label>
+                    <input type="text" class="form-control" id="formrow-firstname-input">
+                </div> -->
+                <div class="row">
 
-              <form class="needs-validation" name="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()"
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label for="nom">Nom</label>
+                          <input type="nom" class="form-control" id="nom">
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label for="prenom">Prenom</label>
+                          <input type="text" class="form-control" id="prenom" />
+                      </div>
+                  </div>
+              </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="formrow-email-input">Email</label>
+                            <input type="email" class="form-control" id="formrow-email-input">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="telephone">Telephone</label>
+                            <input type="text" class="form-control" id="telephone" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label for="formrow-email-input">Type d'auditeur</label>
+                          <select id="formrow-inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label for="telephone">Genre</label>
+                          <select id="formrow-inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="formrow-email-input">Mot de passe</label>
+                        <input type="password" formControlName="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="password" placeholder="Password" color="black" type="password" [type]="type ? 'password' : 'text'" />
+                        <span
+                        style="position: absolute; top: 45px; right: 20px; transform: translateY(-50%);"
+                        [ngClass]="type ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'"
+                        (click)="changeType()"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="formrow-email-input">Mot passe conf</label>
+                      <input type="password" formControlName="password" class="form-control"
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" id="password" placeholder="Password" color="black" type="password" [type]="type1 ? 'password' : 'text'" />
+                      <span
+                      style="position: absolute; top: 45px; right: 20px; transform: translateY(-50%);"
+                      [ngClass]="type1 ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'"
+                      (click)="changeType1()"></span>
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                          Check me out
+                        </label>
+                    </div>
+                </div> -->
+                <div>
+                    <button type="submit" class="btn btn-primary w-md">Envoyer</button>
+                </div>
+            </form>
+              <!-- <form class="needs-validation" name="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()"
                 novalidate>
 
                 <alert type="success" *ngIf="successmsg" [dismissible]="false">Registeration successfull.
                 </alert>
 
                 <alert type="danger" *ngIf="error" [dismissible]="false">{{ error }}</alert>
-
-                <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
+              <div class="row mb-3">
+                <div class="col-md-6 row px-3">
+                  <label for="username" class="form-label">Nom</label>
 
                   <input type="text" formControlName="username" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.username.errors }" id="username"
-                    placeholder="Enter username" />
+                    placeholder="Enter votre Nom" />
 
                   <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                     <div *ngIf="f.username.errors.required">Userame is required</div>
                   </div>
                 </div>
+                <div class="col-md-6 row px-3">
+                  <label for="username" class="form-label">Prenom</label>
+
+                  <input type="text" formControlName="username" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" id="username"
+                    placeholder="Enter votre prenom"/>
+
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Userame is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="telephone" class="form-label">Telephone</label>
+
+                <input type="text" formControlName="telephone" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" id="telephonne" placeholder="Telephone">
+
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </div>
 
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
@@ -72,44 +190,18 @@
                 </div>
 
                 <div class="mt-4 d-grid">
-                  <button class="btn btn-primary" type="submit">Register</button>
+                  <button class="btn btn-primary" type="submit">Se connecter</button>
                 </div>
-                <div class="mt-4 text-center">
-                  <h5 class="font-size-14 mb-3">Sign in with</h5>
-
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="javascript::void()" class="social-list-item bg-primary text-white border-primary">
-                        <i class="mdi mdi-facebook"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="javascript::void()" class="social-list-item bg-info text-white border-info">
-                        <i class="mdi mdi-twitter"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="javascript::void()" class="social-list-item bg-danger text-white border-danger">
-                        <i class="mdi mdi-google"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mt-4 text-center">
-                  <p class="mb-0">By registering you agree to the Skote <a href="javascript: void(0);"
-                      class="text-primary">Terms of
-                      Use</a></p>
-                </div>
-              </form>
+              </form> -->
             </div>
           </div>
         </div>
         <!-- end card -->
 
         <div class="mt-5 text-center">
-          <p>Already have an account ? <a routerLink="/account/login" class="fw-medium text-primary"> Login</a>
+          <p>Vous avez déjà un compte ? <a routerLink="/account/login" class="fw-medium text-primary"> Se connecter</a>
           </p>
-          <p>© {{year}} Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+          <p>© {{year}} Audit-ng <i class="mdi mdi-heart text-danger"></i> by Sniffer</p>
         </div>
       </div> <!-- end col -->
     </div>
