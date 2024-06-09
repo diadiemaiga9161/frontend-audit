@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { AuthenticationService } from '../../../core/services/auth.service';
-import { environment } from '../../../../environments/environment';
+import { AuthenticationService } from '../../core/services/auth.service';
+import { environment } from '../../../environments/environment';
 import { first } from 'rxjs/operators';
-import { UserProfileService } from '../../../core/services/user.service';
+import { UserProfileService } from '../../core/services/user.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { StorageService } from 'src/app/core/services/storage/storage.service';
 import Swal from 'sweetalert2';

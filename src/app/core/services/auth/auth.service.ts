@@ -7,7 +7,14 @@ import { Observable } from 'rxjs';
 // import { CookieService } from 'ngx-cookie-service'; // Importez le CookieService
 
 // Définition de l'URL de base pour les requêtes API
+// Définition de l'URL de base pour les requêtes API
+// const URL_BASE: string = environment.Url_BASE;
+// Définition de l'URL de base pour les requêtes API
 const URL_BASE: string = environment.Url_BASE;
+
+
+
+// Injectable permettant l'injection de dépendances pour ce service dans l'ensemble de l'application
 
 // Options par défaut pour les requêtes HTTP
 const httpOptions: any = {
@@ -55,7 +62,6 @@ export class AuthService {
     nom: string,
     prenom: string,
     telephone: string,
-    adresse: string,
     genre: string,
     email: string,
     password: string,
@@ -65,7 +71,6 @@ export class AuthService {
     console.log(prenom);
     console.log(email);
     console.log(telephone);
-    console.log(adresse);
     console.log(genre);
     console.log(password);
     console.log(roles);
@@ -76,7 +81,6 @@ export class AuthService {
         nom,
         prenom,
         telephone,
-        adresse,
         genre,
         email,
         password,

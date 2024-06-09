@@ -44,8 +44,8 @@ import { AjouterCampagneComponent } from './pages/ajouter-campagne/ajouter-campa
 import { AjouterAuditComponent } from './pages/ajouter-audit/ajouter-audit.component';
 import { AjouterReferentielsComponent } from './pages/ajouter-referentiels/ajouter-referentiels.component';
 
-if (environment.defaultauth === 'firebase') {
-  initFirebaseBackend(environment.firebaseConfig);
+if (environment.Url_BASE === 'firebase') {
+  initFirebaseBackend(environment.Url_BASE);
 } else {
   // tslint:disable-next-line: no-unused-expression
   FakeBackendInterceptor;

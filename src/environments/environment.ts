@@ -6,23 +6,28 @@
 //   Url_BASE:"http://127.0.0.1:8080/api/",
 //   Url_PHOTO:"http://127.0.0.1:8080",
 // };
+// export const environment = {
+//   production: false,
+//   defaultauth: 'fackbackend',
+//   firebaseConfig: {
+//     apiKey: '',
+//     authDomain: '',
+//     databaseURL: '',
+//     projectId: '',
+//     storageBucket: '',
+//     messagingSenderId: '',
+//     appId: '',
+//     measurementId: '',
+//     production: false,
+//   Url_BASE:"http://127.0.0.1:8080/api/",
+//   Url_PHOTO:"http://127.0.0.1:8080",
+//   }
+//   }
 export const environment = {
   production: false,
-  defaultauth: 'fackbackend',
-  firebaseConfig: {
-    apiKey: '',
-    authDomain: '',
-    databaseURL: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: '',
-    measurementId: '',
-    production: true,
-    Url_BASE:"http://127.0.0.1:8480/api/",
-    Url_PHOTO:"http://127.0.0.1:8480",
-  }
-  }
+  Url_BASE:"http://127.0.0.1:8380/api/",
+  Url_PHOTO:"http://127.0.0.1:8380",
+};
 
 
 
