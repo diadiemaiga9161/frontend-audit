@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
      // Obtenez les rôles de l'utilisateur à partir des données
      this.roles = this.storageService.getUser().roles;
 
-       this.router.navigate(['/']).then(() => {
+       this.router.navigate(['/profil']).then(() => {
            window.location.reload();
          });
      // Redirigez l'utilisateur vers la page d'accueil

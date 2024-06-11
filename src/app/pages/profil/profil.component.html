@@ -16,7 +16,9 @@
                 </div>
               </div>
               <div class="col-5 align-self-end">
-                <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+                <img s[src]="generateImageUrl(User?.photos[0]?.nom)" alt="Admin"
+                class="rounded-circle p-1" style="background-color: #ffff;"
+                (error)="handleAuthorImageError($event)" alt="" class="img-fluid">
               </div>
             </div>
           </div>
@@ -26,7 +28,7 @@
                 <div class="avatar-md profile-user-wid mb-4">
                   <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
                 </div>
-                <h5 class="font-size-15 text-truncate">Mariam Telly</h5>
+                <h5 class="font-size-15 text-truncate">{{User?.prenom}} {{User?.nom}}</h5>
                 <p class="text-muted mb-0 text-truncate">Auditeur</p>
               </div>
               <div class="col-sm-8">

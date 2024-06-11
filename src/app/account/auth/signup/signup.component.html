@@ -128,15 +128,8 @@
                         placeholder="Votre Email"
                       />
                     </div>
-                    <div
-                      class="invalid-feedback text-center"
-                      *ngIf="email.errors && f.submitted"
-                    >
-                      <div *ngIf="email.errors['required']">
-                        Email est obligatoire
-                      </div>
-                      <div *ngIf="email.errors['email']">Email non valide</div>
-                    </div>
+                    <div *ngIf="email.errors['required']">Email est obligatoire</div>
+                    <div *ngIf="email.errors['email']">Email non valide</div>
                   </div>
                   <div class="col-md-6">
                     <div class="mb-3">
@@ -244,10 +237,10 @@
                         <option class="py-3">Choisir</option>
                         <option
                           class="mb-3"
-                          *ngFor="let TypeAuditeur of typeAuditeur"
-                          [value]="typeAuditeur.id"
+                          *ngFor="let TypeAuditeur of typeauditeur"
+                          [value]="TypeAuditeur.id"
                         >
-                          {{ typeAuditeur.typeAuditeur }}
+                          {{ TypeAuditeur.typeAuditeur }}
                         </option>
                       </select>
                     </label>

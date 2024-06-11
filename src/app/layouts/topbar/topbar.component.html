@@ -358,11 +358,19 @@
         </button>
         <div class="dropdown-menu dropdown-menu-end" *dropdownMenu>
          
-          <a class="dropdown-item" routerLink="/profil"><i class="bx bx-user font-size-16 align-middle me-1"></i>
-            {{ 'Profil' | translate}}</a>
-          <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout()"><i
+          <!-- <a class="dropdown-item" routerLink="/profil"><i class="bx bx-user font-size-16 align-middle me-1"></i>
+            {{ 'Profil' | translate}}</a> -->
+            <a  class="dropdown-item" style="cursor: pointer ;justify-content: center;" (click)="goToProfilUserOrInfo()" class="bx bx-user font-size-16 align-middle me-1" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            Profil
+            </a>
+            <a class="dropdown-item text-danger" style="cursor: pointer;" (click)="logout()" class="bx bx-power-off font-size-16 align-middle me-1 text-danger" routerLinkActive="active"
+                                    [routerLinkActiveOptions]="{exact: true}">
+                                    Deconnexion
+                                </a>
+          <!-- <a class="dropdown-item text-danger" href="javascript: void(0);" (click)="logout()"><i
               class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
-            {{ 'Déconnecter' | translate}}</a>
+            {{ 'Déconnecter' | translate}}</a> -->
         </div>
       </div>
 

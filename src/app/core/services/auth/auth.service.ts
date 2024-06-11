@@ -64,6 +64,7 @@ export class AuthService {
     telephone: string,
     genre: string,
     email: string,
+    typeAuditeur: any,
     password: string,
     roles: string,
   ): Observable<any> {
@@ -83,6 +84,7 @@ export class AuthService {
         telephone,
         genre,
         email,
+        typeAuditeur,
         password,
         role: [roles, 'userRole']
       },

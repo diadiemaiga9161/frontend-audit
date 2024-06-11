@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { StorageService } from '../storage/storage.service';
 
 // Définition de l'URL de base de l'API
-const API_URL = 'http://localhost:8280/api/test/';
+const API_URL = 'http://localhost:8380/api/test/';
 const URL_BASE: string = environment.Url_BASE;
 const USER_KEY = 'auth-user';
 
@@ -25,14 +25,8 @@ export class UserService {
   
   //   return this.http.post(`${URL_BASE}projetInformatique/ajouter`, formData, { headers });
   // }
-  ajouterExperience(experience: any): Observable<any> {
-    return this.http.post(`${URL_BASE}experienceProfessionnelle/ajouter`, experience);
-  }
-
-  ajouterProjet(projetInformatique: any): Observable<any> {
-    return this.http.post(`${URL_BASE}projetInformatique/ajouter`, projetInformatique);
-  }
-  getInformaticien // Récupération du jeton CSRF depuis le cookie (commenté car non utilisé dans le code actuel)
+ 
+  getAuditeur // Récupération du jeton CSRF depuis le cookie (commenté car non utilisé dans le code actuel)
     () {
     throw new Error('Method not implemented.');
   }
@@ -80,7 +74,7 @@ export class UserService {
   
  // Méthode pour afficher la liste des clients
  AfficherListeUser(): Observable<any> {
-  return this.http.get(`${URL_BASE}user/byRole/ROLE_CLIENT`);
+  return this.http.get(`${URL_BASE}user/byRole/ROLE_AUDITEUR`);
 }
 
 
@@ -89,7 +83,6 @@ export class UserService {
     nom: string,
     prenom: string,
     telephone: string,
-    adresse: string,
     genre: string,
     email: string,
   ): Observable<any> {
@@ -100,7 +93,6 @@ export class UserService {
         nom,
         prenom,
         telephone,
-        adresse,
         genre,
         email,
       },

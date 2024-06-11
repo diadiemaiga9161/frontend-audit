@@ -22,17 +22,13 @@ import { AjouterAuditComponent } from './ajouter-audit/ajouter-audit.component';
 import { AjouterReferentielsComponent } from './ajouter-referentiels/ajouter-referentiels.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'dashboard' },
-  {
-    path: "",
-    component: DefaultComponent
-  },
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: '', component: DefaultComponent },
-  {path: 'profil', component: ProfilComponent},
-  {path: 'ajouter-audites', component: AjouterAuditeComponent},
-  {path: 'ajouter-audit', component: AjouterAuditComponent},
-  {path: 'ajouter-referentiels', component: AjouterReferentielsComponent },
-  {path: 'ajouter-campagne', component: AjouterCampagneComponent},
+  { path: 'profil', component: ProfilComponent },
+  { path: 'ajouter-audites', component: AjouterAuditeComponent },
+  { path: 'ajouter-audit', component: AjouterAuditComponent },
+  { path: 'ajouter-referentiels', component: AjouterReferentielsComponent },
+  { path: 'ajouter-campagne', component: AjouterCampagneComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'crossreferentiels', component: CrossReferentielsComponent },
@@ -40,12 +36,11 @@ const routes: Routes = [
   { path: 'statistiques', component: StatistiquesbetaComponent },
   { path: 'audits-cours', component: AuditsCoursComponent },
   { path: 'echelles', component: EchellesComponent },
-  { path: 'gestionsaudites',component: GestionAuditsComponent},
-  // { path: 'campagnes', component: CampagnesComponent },
-  { path: 'campagnes', component: CampagnesComponent},
-  { path: 'profile' , component: GestionProfileComponent },
+  { path: 'gestionsaudites', component: GestionAuditsComponent },
+  { path: 'campagnes', component: CampagnesComponent },
+  { path: 'profile', component: GestionProfileComponent },
   { path: 'accueil', component: AccueilComponent },
-  { path: 'audites', component: AuditesComponent},
+  { path: 'audites', component: AuditesComponent },
   { path: 'filemanager', component: FilemanagerComponent },
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'ecommerce', loadChildren: () => import('./ecommerce/ecommerce.module').then(m => m.EcommerceModule) },
@@ -65,6 +60,7 @@ const routes: Routes = [
   { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) },
   { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
