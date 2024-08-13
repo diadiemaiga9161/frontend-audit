@@ -40,10 +40,12 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { MapsModule } from './maps/maps.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChatComponent } from './chat/chat.component';
+import { ProfilComponent } from './profil/profil.component';
+import { LoginComponent } from './login/login.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent, FilemanagerComponent],
+  declarations: [CalendarComponent, ChatComponent, FilemanagerComponent,ProfilComponent,LoginComponent],
   imports: [
     CommonModule,
     FormsModule,

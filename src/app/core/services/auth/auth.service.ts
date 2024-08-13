@@ -57,6 +57,7 @@ export class AuthService {
     );
   }
 
+  
   // Méthode pour effectuer l'inscription
   inscription(
     nom: string,
@@ -71,6 +72,7 @@ export class AuthService {
     console.log(nom);
     console.log(prenom);
     console.log(email);
+    console.log(typeAuditeur,);
     console.log(telephone);
     console.log(genre);
     console.log(password);
@@ -93,15 +95,16 @@ export class AuthService {
   }
 
   // Méthode pour effectuer la déconnexion
-  logout(): Observable<any> {
-    const req = new HttpRequest('POST', URL_BASE + '/logout', {}, httpOptions);
-    return this.http.request(req);
-  }
-   //METHODE PERMETTANT DE SE DECONNECTER
   // logout(): Observable<any> {
   //   const req = new HttpRequest('POST', URL_BASE + '/logout', {}, httpOptions);
   //   return this.http.request(req);
   // }
+  
+   //METHODE PERMETTANT DE SE DECONNECTER
+  logout(): Observable<any> {
+    const req = new HttpRequest('POST', URL_BASE + '/logout', {}, httpOptions);
+    return this.http.request(req);
+  }
 
   // Méthode pour actualiser la page
   reloadPage(): void {

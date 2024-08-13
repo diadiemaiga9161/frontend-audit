@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 
 
 const URL_PHOTO: string = environment.Url_PHOTO;
+
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
@@ -55,7 +56,6 @@ export class ProfilComponent {
     private serviceUser: UserService,
     private storageService: StorageService,
     private authService: AuthService,
-    private typeauditeurService: TypeauditeurService,
     private router: Router,
   ) {
 
@@ -66,6 +66,8 @@ export class ProfilComponent {
       telephone: this.User.telephone,
       email: this.User.email,
       genre: this.User.genre,
+      roles: this.User.roles,
+
       // typeauditeur: this.User.typeauditeur.id,
     };
     console.log(this.User);
@@ -83,16 +85,14 @@ export class ProfilComponent {
   }
 
   handleAuthorImageError(event: any) {
-    event.target.src = 'assets/img/';
+    event.target.src = 'assets/images/diadie.jpg';
   }
 
-  generateImageUrl(photoFileName: string): string {
+generateImageUrl(photoFileName: string): string {
     const baseUrl = URL_PHOTO;
     return `${URL_PHOTO}${photoFileName}`;
   }
  
- 
-
   changeTab(tab: string) {
     this.selectedTab = tab;
   }
@@ -149,7 +149,7 @@ export class ProfilComponent {
       heightAuto: false
     })
     swalWithBootstrapButtons.fire({
-      text: "Etes-vous sûre de changer votre mot de passe ?",
+      text: "Êtes-vous sûr de vouloir changer votre mot de passe ?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',
@@ -194,7 +194,7 @@ export class ProfilComponent {
     let timerInterval = 2000;
     Swal.fire({
       position: 'center',
-      text: 'Le mot de passe a été modifié avec succès.',
+      text: 'Votre mot de passe a été modifié avec succès.',
       title: 'Mot de passe modifié',
       icon: 'success',
       heightAuto: false,
@@ -225,20 +225,20 @@ export class ProfilComponent {
 
   //METHODE PERMETTANT DE MODIFIER LE PROFIL D'UN UTILISATEUR
   ModifierProfilUser() {
-    const { nom, prenom, telephone, email, genre, adresse } = this.form;
+    const { nom, prenom, telephone, email, adresse } = this.form;
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn',
-        cancelButton: 'btn btn-danger',
+        cancelButton: 'btn btn-blue',
       },
       heightAuto: false
     })
     swalWithBootstrapButtons.fire({
       // title: 'Etes-vous sûre de vous déconnecter?',
-      text: "Etes-vous sûre de modifier votre profil?",
+      text: "Êtes-vous certain de vouloir modifier votre profil ?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Confirmer',
+      confirmButtonText: 'Moifier',
       cancelButtonText: 'Annuler',
       reverseButtons: true
     }).then((result) => {
@@ -247,7 +247,7 @@ export class ProfilComponent {
         if (user && user.token) {
           // Définissez le token dans le service serviceUser
           this.serviceUser.setAccessToken(user.token);
-          this.serviceUser.modifierProfilUser(nom, prenom, telephone, adresse, genre).subscribe({
+          this.serviceUser.modifierProfilUser(nom, prenom, telephone, adresse, email).subscribe({
             next: data => {
               // console.log(data);
 
@@ -290,6 +290,8 @@ export class ProfilComponent {
     })
 
   }
+
+  
 
   //POPUP APRES MODIFICATION PROFIL
   popUpModificationProfilUser() {

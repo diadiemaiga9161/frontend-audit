@@ -7,6 +7,11 @@ import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { LanguageService } from '../../core/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
+import { StorageService } from 'src/app/core/services/storage/storage.service';
+import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+
+const URL_PHOTO: string = environment.Url_PHOTO;
 
 @Component({
   selector: 'app-topbar',
@@ -24,12 +29,19 @@ export class TopbarComponent implements OnInit {
   flagvalue:any;
   countryName:any;
   valueset:any;
+  User: any
+  profileImageUrl: string = '';
+  isLoggedIn = false;
+  isLoginFailed = true;
 
-  constructor(@Inject(DOCUMENT) private document: any, private router: Router, private authService: AuthenticationService,
+  constructor(@Inject(DOCUMENT) private document: any, private router: Router, private authService: AuthService,
               private authFackservice: AuthfakeauthenticationService,
+              private storageService: StorageService,
               public languageService: LanguageService,
               public translate: TranslateService,
-              public _cookiesService: CookieService) {
+              public _cookiesService: CookieService
+              
+            ) {
   }
 
   listLang:any = [
@@ -57,7 +69,44 @@ export class TopbarComponent implements OnInit {
     } else {
       this.flagvalue = val.map(element => element.flag);
     }
+    //methode pour la photo de nav
+    this.User = this.storageService.getUser();
+    console.log(this.User);
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+    } else if (!this.storageService.isLoggedIn()) {
+      this.isLoginFailed = false;
+    }
+    // Chargez l'image de profil actuelle depuis User.user.photo (si disponible)
+    if (this.User && this.User.photos[0]) {
+      this.profileImageUrl = this.generateImageUrl(this.User.photos[0]?.nom);
+    }
   }
+
+  // IMAGE PAR DEFAUT USER
+  handleAuthorImageError(event: any) {
+    event.target.src = 'assets/images/diadie.jpg';
+  }
+  // ngOnInit(): void {
+  //   this.User = this.storageService.getUser();
+  //   console.log(this.User);
+  //   if (this.storageService.isLoggedIn()) {
+  //     this.isLoggedIn = true;
+  //   } else if (!this.storageService.isLoggedIn()) {
+  //     this.isLoginFailed = false;
+  //   }
+  //   // Chargez l'image de profil actuelle depuis User.user.photo (si disponible)
+  //   if (this.User && this.User.photos[0]) {
+  //     this.profileImageUrl = this.generateImageUrl(this.User.photos[0]?.nom);
+  //   }
+  // }
+
+
+    //IMAGE
+    generateImageUrl(photoFileName: string): string {
+      const baseUrl = URL_PHOTO;
+      return baseUrl + photoFileName;
+    }
 
     setLanguage(text: string, lang: string, flag: string) {
       this.countryName = text;
@@ -84,14 +133,58 @@ export class TopbarComponent implements OnInit {
   /**
    * Logout the user
    */
-   logout() {
-   if (environment.Url_BASE === 'firebase') {
-      this.authService.logout();
-    } else {
-      this.authFackservice.logout();
-    }
-     this.router.navigate(['/account/login']);
+  //  logout() {
+  //  if (environment.Url_BASE === 'firebase') {
+  //     this.authService.logout();
+  //   } else {
+  //     this.authFackservice.logout();
+  //   }
+  //    this.router.navigate(['/account/login']);
+  // }
+   //METHODE PERMETTANT DE SE DECONNECTER
+   logout(): void {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn',
+        cancelButton: 'btn btn-danger',
+      },
+      heightAuto: false
+    })
+    swalWithBootstrapButtons.fire({
+      // title: 'Etes-vous sûre de vous déconnecter?',
+      text: "Etes-vous sûre de vous déconnecter?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirmer',
+      cancelButtonText: 'Annuler',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.authService.logout().subscribe({
+          next: res => {
+            // console.log(res);
+            this.storageService.clean();
+            this.router.navigateByUrl("/account/login");
+            if (this.storageService.isLoggedIn()) {
+              this.isLoggedIn = true;
+            } else if (!this.storageService.isLoggedIn()) {
+              this.isLoginFailed = false;
+            }
+          },
+          error: err => {
+            // console.log(err);
+          }
+        });
+      }
+    })
+
   }
+
+    // goToProfilUserOrInfo pour envoyer sur la page profil apres la connexion 
+    goToProfilUserOrInfo() {
+      this.User = this.storageService.getUser();
+      this.router.navigate(["/profil"]);
+      }
 
   /**
    * Fullscreen method
@@ -129,3 +222,5 @@ export class TopbarComponent implements OnInit {
     }
   }
 }
+
+

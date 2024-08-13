@@ -68,7 +68,6 @@ export function createTranslateLoader(http: HttpClient): any {
     ReferentielsComponent,
     StatistiquesbetaComponent,
     CrossReferentielsComponent,
-    ProfilComponent,
     AjouterAuditeComponent,
     AjouterCampagneComponent,
     AjouterAuditComponent,

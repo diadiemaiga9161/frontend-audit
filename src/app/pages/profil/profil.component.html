@@ -1,87 +1,108 @@
 <div class="container-fluid">
 
-    <!-- <app-page-title title="Profile" [breadcrumbItems]="breadCrumbItems"></app-page-title> -->
-  
-    <div class="row">
-      <div class="col-xl-4">
-        <div class="card overflow-hidden">
-          <div class="bg-primary-subtle">
-            <div class="row">
-              <div class="col-7">
-                <div class="text-primary p-3">
-                  <h5 class="text-primary">Content de te revoir !
-                  </h5>
-                  <p>Cela semblera simplifié
-                  </p>
-                </div>
-              </div>
-              <div class="col-5 align-self-end">
-                <img s[src]="generateImageUrl(User?.photos[0]?.nom)" alt="Admin"
-                class="rounded-circle p-1" style="background-color: #ffff;"
-                (error)="handleAuthorImageError($event)" alt="" class="img-fluid">
+  <!-- <app-page-title title="Profile" [breadcrumbItems]="breadCrumbItems"></app-page-title> -->
+
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card overflow-hidden">
+        <div class="bg-primary-subtle">
+          <div class="row">
+            <div class="col-7">
+              <div class="text-primary p-3">
+                <h5 class="text-primary">Content de te revoir !
+                </h5>
+                <p>Cela semblera simplifié
+                </p>
               </div>
             </div>
+            <div class="col-5 align-self-end">
+              <!-- <img s[src]="generateImageUrl(User?.photos[0]?.nom)" alt="Admin"
+                class="rounded-circle p-1" style="background-color: #ffff;"
+                (error)="handleAuthorImageError($event)" alt="" class="img-fluid"> -->
+            </div>
           </div>
-          <div class="card-body pt-0">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="avatar-md profile-user-wid mb-4">
-                  <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
-                </div>
-                <h5 class="font-size-15 text-truncate">{{User?.prenom}} {{User?.nom}}</h5>
-                <p class="text-muted mb-0 text-truncate">Auditeur</p>
+        </div>
+        <div class="card-body pt-0">
+          <div class="row">
+            <div class="col-sm-4">
+              
+              <div class="avatar-md profile-user-wid mb-4">
+                <!-- <img src="assets/images/users/avatar-1.jpg" alt="" class="img-thumbnail rounded-circle">
+                <img [src]="generateImageUrl(User?.photos[0]?.nom)" alt="Admin"
+                class="rounded-circle p-1" style="background-color: #ffff;"
+                (error)="handleAuthorImageError($event)" class="img-thumbnail rounded-circle">
               </div>
-              <div class="col-sm-8">
-                <div class="pt-4">
-  
-                  <div class="row">
-                    <div class="col-6">
-                      <h5 class="font-size-15">10</h5>
-                      <p class="text-muted mb-0">Audits en cours</p>
-                    </div>
-                    <div class="col-6">
-                      <h5 class="font-size-15">5</h5>
-                      <p class="text-muted mb-0">Audites fini</p>
-                    </div>
+              <div class="file change-photo-icon">
+                <img src="assets/img/photo.png" style="height: 25px;" alt="">
+                <i class="fa-sharp fa-solid fa-camera-retro" style="color: #000000;"></i>
+                <input type="file" name="file" (change)="onPhotoChange($event)"
+                    accept=".png, .jpeg, .jpg, .svg" /> -->
+                    <div class="profile-img mb-3">
+                      <img [src]="generateImageUrl(User?.photos[0]?.nom)" alt="Admin"
+                          class="rounded-circle p-1" style="background-color: #ffff;"
+                          (error)="handleAuthorImageError($event)">
+                      <div class="file change-photo-icon">
+                          <img src="assets/images/photo.png" style="height: 25px;" alt="">
+                          <!-- <i class="fa-sharp fa-solid fa-camera-retro" style="color: #000000;"></i> -->
+                          <input type="file" name="file" (change)="onPhotoChange($event)"
+                              accept=".png, .jpeg, .jpg, .svg" />
+                      </div>
+                  </div>
+            </div>
+              <h5 class="font-size-15 text-truncate"></h5>
+              <p class="text-muted mb-0 text-truncate">Auditeur</p>
+            </div>
+            <div class="col-sm-8">
+              <div class="pt-4">
+
+                <div class="row">
+                  <div class="col-6">
+                    <h5 class="font-size-15">10</h5>
+                    <p class="text-muted mb-0">Audits en cours</p>
+                  </div>
+                  <div class="col-6">
+                    <h5 class="font-size-15">5</h5>
+                    <p class="text-muted mb-0">Audites fini</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- end card -->
-  
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title mb-4">Information personale</h4>
-  
-            <p class="text-muted mb-4"> Description de la personne </p>
-            <div class="table-responsive">
-              <table class="table table-nowrap mb-0">
-                <tbody>
-                  <tr>
-                    <th scope="row">Nom Prenom :</th>
-                    <td>Mariam Telly</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Mobile :</th>
-                    <td>(223) 123 1234</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">E-mail :</th>
-                    <td>cynthiaskote@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Type d'utilisateur:</th>
-                    <td>Auditeur</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+      </div>
+      <!-- end card -->
+
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Information personale</h4>
+
+          <p class="text-muted mb-4"> Description de la personne </p>
+          <div class="table-responsive">
+            <table class="table table-nowrap mb-0">
+              <tbody>
+                <tr>
+                  <th scope="row">Nom Prenom :</th>
+                  <td>{{User?.prenom}} {{User?.nom}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Mobile :</th>
+                  <td>(223) {{User?.telephone}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">E-mail :</th>
+                  <td>{{User?.email}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Type d'utilisateur:</th>
+                  <td>{{User?.roles}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <!-- end card -->
-           <!-- end card -->
+      </div>
+      <!-- end card -->
+      <!-- end card -->
 
       <div class="card">
         <div class="card-body">
@@ -98,13 +119,14 @@
                   </div>
                   <div class="flex-grow-1">
                     <div>
-                      <h5 class="font-size-15"><a href="javascript: void(0);" class="text-dark">Back end Developer</a></h5>
-                      <span class="text-primary">2016 - 19</span>
+                      <h5 class="font-size-15"><a href="javascript: void(0);" class="text-dark">ODC MALI</a>
+                      </h5>
+                      <span class="text-primary">2016 - 2019</span>
                     </div>
                   </div>
                 </div>
               </li>
-              <li class="event-list">
+              <!-- <li class="event-list">
                 <div class="event-timeline-dot">
                   <i class="bx bx-right-arrow-circle"></i>
                 </div>
@@ -114,13 +136,14 @@
                   </div>
                   <div class="flex-grow-1">
                     <div>
-                      <h5 class="font-size-15"><a href="javascript: void(0);" class="text-dark">Front end Developer</a></h5>
+                      <h5 class="font-size-15"><a href="javascript: void(0);" class="text-dark">Front end Developer</a>
+                      </h5>
                       <span class="text-primary">2013 - 16</span>
                     </div>
                   </div>
                 </div>
-              </li>
-              <li class="event-list">
+              </li> -->
+              <!-- <li class="event-list">
                 <div class="event-timeline-dot">
                   <i class="bx bx-right-arrow-circle"></i>
                 </div>
@@ -135,124 +158,193 @@
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> -->
             </ul>
           </div>
 
         </div>
       </div>
       <!-- end card -->
+    </div>
+
+    <div class="col-xl-8">
+
+      <div class="row">
+        <div class="col-md-4">
+          <!-- <app-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon"></app-stat> -->
+        </div>
       </div>
-  
-      <div class="col-xl-8">
-  
-        <div class="row">
-          <div class="col-md-4">
-            <!-- <app-stat [title]="stat.title" [value]="stat.value" [icon]="stat.icon"></app-stat> -->
-          </div>
-        </div> 
-        <div class="card">
-          <div class="card-body">
-            
-            <h4 class="card-title mb-4">Modifier mes informaions</h4>
-            <div >
-    
-              <form>
-                
-                <div class="row mb-4">
-                    <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nom</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="horizontal-firstname-input">
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title mb-4">Modifier mes informaions</h4>
+          <div>
+
+            <form name="form" (ngSubmit)="f.form.valid && ModifierProfilUser()" #f="ngForm" novalidate>
+              <div class="row mb-4">
+                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nom</label>
+                <div class="col-sm-9">
+                  <!-- <input type="text" class="form-control" id="horizontal-firstname-input"> -->
+                  <input type="text" class="form-control" name="nom" [(ngModel)]="form.nom" required minlength="3"
+                    maxlength="20" #nom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nom.errors }">
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="nom.errors && f.submitted">
+                    <div *ngIf="nom.errors['required']">Nom est obligatoire</div>
+                    <div *ngIf="nom.errors['minlength']">
+                      Nom doit avoir au moins 3 caractères
                     </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Prenom</label>
-                  <div class="col-sm-9">
-                      <input type="text" class="form-control" id="horizontal-firstname-input">
-                  </div>
-              </div>
-                <div class="row mb-4">
-                    <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email</label>
-                    <div class="col-sm-9">
-                        <input type="email" class="form-control" id="horizontal-email-input">
+                    <div *ngIf="nom.errors['maxlength']">
+                      Nom doit comporter au maximum 25 caractères
                     </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="horizontal-email-input" class="col-sm-3 col-form-label">Telephone</label>
-                  <div class="col-sm-9">
-                      <input type="text" class="form-control" id="horizontal-email-input">
                   </div>
+                </div>
               </div>
-                
+              <div class="row mb-4">
+                <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Prenom</label>
+                <div class="col-sm-9">
+                  <!-- <input type="text" class="form-control" id="horizontal-firstname-input"> -->
+                  <input type="text" class="form-control" id="horizontal-firstname-input" class="form-control"
+                    name="prenom" [(ngModel)]="form.prenom" required minlength="3" maxlength="20" #prenom="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && prenom.errors }">
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="prenom.errors && f.submitted">
+                    <div *ngIf="prenom.errors['required']">Prénom obligatoire</div>
+                    <div *ngIf="prenom.errors['minlength']">
+                      Prénom doit avoir au moins 5 caractères pour la modification
+                    </div>
+                    <div *ngIf="prenom.errors['maxlength']">
+                      Prénom doit comporter au maximum 25 caractères
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label for="horizontal-email-input" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                  <!-- <input type="email" class="form-control" id="horizontal-email-input"> -->
+                  <input class="form-control" id="horizontal-email-input" name="email" [(ngModel)]="form.email" required
+                    email #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.errors }" type="email">
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">Email obligatoire</div>
+                    <div *ngIf="email.errors['email']">
+                      Email doit être une adresse e-mail valide pour la modification
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label for="horizontal-email-input" class="col-sm-3 col-form-label">Telephone</label>
+                <div class="col-sm-9">
+                  <input class="form-control" id="horizontal-email-input" type="tel" name="telephone"
+                    [(ngModel)]="form.telephone" required minlength="8" maxlength="13" #telephone="ngModel"
+                    [ngClass]="{ 'is-invalid': f.submitted && telephone.errors }">
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="telephone.errors && f.submitted">
+                    <div *ngIf="telephone.errors['required']">Numero obligatoire
+                    </div>
+                    <div *ngIf="telephone.errors['minlength']">
+                      numero doit avoir au moins 8 caractères pour la modification
+                    </div>
+                    <div *ngIf="telephone.errors['maxlength']">
+                      Numéro doit comporter au maximum 13 caractères
+                    </div>
+                  </div>
+                  <!-- <input type="text" class="form-control" id="horizontal-email-input"> -->
+                </div>
+              </div>
 
 
-                <div class="row justify-content-end">
-                    <div class="col-sm-9">
-                        <!-- <div class="form-check mb-4">
+
+              <div class="row justify-content-end">
+                <div class="col-sm-9">
+                  <!-- <div class="form-check mb-4">
                             <input class="form-check-input" type="checkbox" id="horizontalLayout-Check">
                             <label class="form-check-label" for="horizontalLayout-Check">
                                 Remember me
                             </label>
                         </div> -->
 
-                        <div>
-                            <button type="submit" class="btn btn-primary w-md">Modifier</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            
-            <h4 class="card-title mb-4">Mot de paase</h4>
-            <div >
-    
-              <form>
-                <div class="row mb-4">
-                    <label for="horizontal-email-input" class="col-sm-3 col-form-label">Mot de passe actule</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="horizontal-password-input" required minlength="6"
-                        #oldPassword=""
-                        color="black" type="password" [type]="type ? 'password' : 'text'">
-                        <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
-                         [ngClass]="type ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'" (click)="changeType()"></span>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="horizontal-email-input" class="col-sm-3 col-form-label">Nouvelle mot de passe</label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" id="horizontal-password-input" required minlength="6"
-                    #oldPassword=""
-                    color="black" type="password" [type]="type1 ? 'password' : 'text'">
-                    <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
-                     [ngClass]="type1 ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'" (click)="changeType1()"></span>
+                  <div>
+                    <button type="submit" class="btn btn-primary w-md">Modifier</button>
+                  </div>
                 </div>
               </div>
-                <div class="row mb-4">
-                  <label for="horizontal-email-input" class="col-sm-3 col-form-label">Confirmation mot de passe</label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" id="horizontal-password-input" required minlength="6"
-                    #oldPassword=""
-                    color="black" type="password" [type]="type2 ? 'password' : 'text'">
-                    <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
-                     [ngClass]="type2 ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'" (click)="changeType2()"></span>
-                </div>
-              </div>
-                <div class="row justify-content-end">
-                    <div class="col-sm-9">
-                        <div>
-                            <button type="submit" class="btn btn-primary w-md">Modifier</button>
-                        </div>
-                    </div>
-                </div>
             </form>
-            </div>
           </div>
         </div>
-        <!-- <div class="card">
+      </div>
+      <div class="card">
+        <div class="card-body">
+
+          <h4 class="card-title mb-4">Mot de paase</h4>
+          <div>
+
+            <form name="ChangeMdpForm" (ngSubmit)="f1.form.valid && ModifierMotDePasse()" #f1="ngForm" novalidate>
+              <div class="row mb-4">
+                <label for="horizontal-email-input" class="col-sm-3 col-form-label">Mot de passe actule</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="horizontal-password-input" name="oldPassword"
+                    [(ngModel)]="ChangeMdpForm.oldPassword" required minlength="6" #oldPassword="ngModel"
+                    [ngClass]="{ 'is-invalid': f1.submitted && oldPassword.errors }" color="black" type="password"
+                    [type]="type ? 'password' : 'text'">
+                  <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
+                    [ngClass]="type ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'"
+                    (click)="changeType()"></span>
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="oldPassword.errors && f1.submitted">
+                    <div *ngIf="oldPassword.errors['required']">Mot de passe actuel
+                      obligatoire</div>
+                    <div *ngIf="oldPassword.errors['minlength']">
+                      Le mot de passe doit contenir au moins 6 caractères.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label for="horizontal-email-input" class="col-sm-3 col-form-label">Nouvelle mot de passe</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="horizontal-password-input"
+                    [(ngModel)]="ChangeMdpForm.newPassword" required minlength="6" #newPassword="ngModel"
+                    [ngClass]="{ 'is-invalid': f1.submitted && newPassword.errors }" color="black" type="password"
+                    [type]="type1 ? 'password' : 'text'">
+                  <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
+                    [ngClass]="type1 ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'"
+                    (click)="changeType1()"></span>
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="newPassword.errors && f1.submitted">
+                    <div *ngIf="newPassword.errors['required']">Nouveau mot de passe
+                      obligatoire</div>
+                    <div *ngIf="newPassword.errors['minlength']">
+                      Le mot de passe doit contenir au moins 6 caractères</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label for="horizontal-email-input" class="col-sm-3 col-form-label">Confirmation mot de passe</label>
+                <div class="col-sm-9">
+                  <input type="password" class="form-control" id="horizontal-password-input"
+                    [(ngModel)]="ChangeMdpForm.password2" required minlength="6" #password2="ngModel"
+                    [ngClass]="{ 'is-invalid': f1.submitted && password2.errors }" color="black" type="password"
+                    [type]="type2 ? 'password' : 'text'">
+                  <span style="position: absolute; top: 15px; right: 40px; transform: translateY(-50%);"
+                    [ngClass]="type2 ? 'toggle-password fa fa-eye-slash' : 'toggle-password fa fa-eye'"
+                    (click)="changeType2()"></span>
+                  <div style="text-align: center;" class="invalid-feedback" *ngIf="password2.errors && f1.submitted">
+                    <div *ngIf="password2.errors['required']">Confirmation obligatoire
+                    </div>
+                    <div *ngIf="password2.errors['minlength']">
+                      Le mot de passe doit contenir au moins 6 caractères.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-9">
+                  <div>
+                    <button type="submit" class="btn btn-primary w-md">Modifier</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
           <div class="card-body">
             <h4 class="card-title mb-4">Mes audites</h4>
             <div class="table-responsive">
@@ -293,8 +385,7 @@
             </div>
           </div>
         </div> -->
-      </div>
     </div>
-    <!-- end row -->
   </div>
-  
+  <!-- end row -->
+</div>

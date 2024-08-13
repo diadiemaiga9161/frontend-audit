@@ -14,18 +14,7 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class UserService {
-  // ajouterProjet(titre: string, description: string, typeProjet: string, photo: File): Observable<any> {
-  //   const formData = new FormData();
-  //   formData.append('titre', titre);
-  //   formData.append('description', description);
-  //   formData.append('typeProjet', typeProjet);
-  //   formData.append('photo', photo);
-  
-  //   const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
-  
-  //   return this.http.post(`${URL_BASE}projetInformatique/ajouter`, formData, { headers });
-  // }
- 
+
   getAuditeur // Récupération du jeton CSRF depuis le cookie (commenté car non utilisé dans le code actuel)
     () {
     throw new Error('Method not implemented.');
@@ -72,9 +61,13 @@ export class UserService {
     return this.http.get(`${URL_BASE}user/afficherinfo`, { headers });
   }
   
- // Méthode pour afficher la liste des clients
+ // Méthode pour afficher la liste des auditeurs
  AfficherListeUser(): Observable<any> {
   return this.http.get(`${URL_BASE}user/byRole/ROLE_AUDITEUR`);
+}
+ // Méthode pour afficher la liste des ENTREPRISE
+ AfficherListeUsers(): Observable<any> {
+  return this.http.get(`${URL_BASE}user/byRole/ROLE_ENTREPRISE`);
 }
 
 
