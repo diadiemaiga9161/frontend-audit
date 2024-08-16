@@ -66,19 +66,19 @@
                     <th scope="col">Version</th>
                     <th scope="col">Langue</th>
                     <th scope="col">Date-creation</th>
-                    <th scope="col">Etiquettes</th>
+                    <!-- <th scope="col">Etiquettes</th> -->
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody  *ngFor="let Referentiel of referentiel ">
                   <tr>
-                    <th scope="row">01</th>
-                    <td ><span class="badge bg-success">Success</span></td>
-                    <td>Awd</td>
-                    <td>1.4</td>
-                    <td>Francais</td>
-                    <td>12/20/2024</td>
-                    <td>Etiquettes</td>
+                    <th scope="row">{{Referentiel?.referentiel}}</th>
+                    <td ><span class="badge bg-success">{{Referentiel?.finalite}}</span></td>
+                    <td>{{Referentiel?.nom}}</td>
+                    <td>{{Referentiel?.dervnierversion}}</td>
+                    <td>{{Referentiel?.langue}}</td>
+                    <td [attr.data-date]="Referentiel?.datecreation | date: 'yyyy-MM-dd'">{{Referentiel?.datecreation | date: 'dd-MM-yyyy'}}</td>
+                    <!-- <td>Etiquettes</td> -->
                     
                     <!-- <td><span class="badge" >status</span></td> -->
                     <td>
@@ -95,46 +95,22 @@
                       </ul>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row">02</th>
-                    <td><span class="badge bg-danger">En-cours</span></td>
-                    <td>ODC</td>
-                    <td>2.4</td>
-                    <td>Francais</td>
-                    <td>12/20/2025</td>
-                    <td>Etiquettes</td>
-                    
-                    <!-- <td><span class="badge" >status</span></td> -->
-                    <td>
-                      <ul class="list-unstyled hstack gap-1 mb-0">
-                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
-                          <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
-                        </li>
-                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
-                          <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
-                        </li>
-                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
-                          <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+                 
                 </tbody>
               </table>
             </div>
-            <div class="row justify-content-between align-items-center">
+            <!-- <div class="row justify-content-between align-items-center">
               <div class="col-auto me-auto">
                 <p class="text-muted mb-0">Référentiels </p>
               </div>
               <div class="col-auto">
                 <div class="text-md-right float-md-end pagination-rounded">
                   <ul class="pagination pagination-rounded justify-content-end mb-2">
-                    <!-- <pagination [totalItems]="(total | async)!" [(ngModel)]="service.page" [itemsPerPage]="service.pageSize" previousText="&lsaquo;" nextText="&rsaquo;"></pagination> -->
+                    <pagination [totalItems]="(total | async)!" [(ngModel)]="service.page" [itemsPerPage]="service.pageSize" previousText="&lsaquo;" nextText="&rsaquo;"></pagination>
                   </ul>
                 </div>
               </div>
-              <!--end col-->
-            </div>
+            </div> -->
             <!--end row-->
           </div>
         </div>

@@ -43,9 +43,11 @@ import { ChatComponent } from './chat/chat.component';
 import { ProfilComponent } from './profil/profil.component';
 import { LoginComponent } from './login/login.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
+import { AjouterAuditComponent } from './ajouter-audit/ajouter-audit.component';
+import { AjouterReferentielsComponent } from './ajouter-referentiels/ajouter-referentiels.component';
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent, FilemanagerComponent,ProfilComponent,LoginComponent],
+  declarations: [CalendarComponent, ChatComponent, FilemanagerComponent,ProfilComponent,LoginComponent,AjouterAuditComponent],
   imports: [
     CommonModule,
     FormsModule,

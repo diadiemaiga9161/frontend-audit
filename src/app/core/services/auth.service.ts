@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 
 import { getFirebaseBackend } from '../../authUtils';
 import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 
 import { User } from '../models/auth.models';
 import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 import { StorageService } from './storage/storage.service';
+import { Observable } from 'rxjs';
 
 import Swal from 'sweetalert2';
 
+const URL_BASE: string = environment.Url_BASE;
 
 
 const URL_PHOTO: string = environment.Url_PHOTO;
@@ -24,6 +27,7 @@ export class AuthenticationService {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private http: HttpClient,
     private storageService: StorageService
   ) { }
 
@@ -39,12 +43,25 @@ export class AuthenticationService {
      * @param email email of user
      * @param password password of user
      */
-    login(email: string, password: string) {
-        return getFirebaseBackend().loginUser(email, password).then((response: any) => {
-            const user = response;
-            return user;
-        });
-    }
+    // login(email: string, password: string) {
+    //     return getFirebaseBackend().loginUser(email, password).then((response: any) => {
+    //         const user = response;
+    //         return user;
+    //     });
+    // }
+ // Méthode pour effectuer la connexion
+ connexion(telephoneOrEmail: string, password: string): Observable<any> {
+  console.log(telephoneOrEmail);
+  console.log(password);
+  return this.http.post(
+    URL_BASE + 'auth/signin',
+    {
+      telephoneOrEmail,
+      password,
+    },
+    { withCredentials: true }
+  );
+}
 
     /**
      * Performs the register
