@@ -69,7 +69,7 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // AFFICHER LA LISTE DES INFORMATICIENS
+    // AFFICHER LA LISTE DES TypeAudit
     this.typeAuditeurService.AfficherListeTypeAuditeur().subscribe(data => {
       this.typeauditeur = data;
       console.log(this.typeauditeur);

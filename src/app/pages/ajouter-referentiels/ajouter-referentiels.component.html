@@ -7,81 +7,72 @@
                 <br>
                 <!-- <p class="card-title-desc">Create beautifully simple form labels that float over your input fields.</p> -->
 
-                <form >
+                <form #form1="ngForm" (ngSubmit)="submitForm1(form1)" novalidate>
                     <div class="row">
-                        <h5 class="card-title" >Référence</h5>
-                     <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>......</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Sélectionner une référentiels</label>
+                      <h5 class="card-title">Référence</h5>
+                      <div class="col-md-6">
+                        <div>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="referentiel" id="referentiel" placeholder="Enter le referentiel" [(ngModel)]="form1.referentiel">
+                            <label for="referentiel">Referentiel</label>
+                          </div>
                         </div>
-                     </div>
-                     <div class="col-md-6">
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Finalises</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Finalise</label>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="finalite" id="finalite" placeholder="Enter la Finalites" [(ngModel)]="form1.finalite">
+                            <label for="finalite">Finalites</label>
+                          </div>
                         </div>
-                     </div>
+                      </div>
                     </div>
                     <div class="row">
-                        <h5 class="card-title" >Nom</h5>
-                     <div class="col-md-6">
+                      <h5 class="card-title">Nom</h5>
+                      <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>......</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Nom</label>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Enter le Nom" [(ngModel)]="form1.nom">
+                            <label for="nom">Nom</label>
+                          </div>
                         </div>
-                     </div>
-                     <div class="col-md-6">
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Version</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Version</label>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="dervnierversion" id="dervnierversion" placeholder="Enter la Version" [(ngModel)]="form1.dervnierversion">
+                            <label for="dervnierversion">Version</label>
+                          </div>
                         </div>
-                     </div>
+                      </div>
                     </div>
                     <div class="row">
-                        <h5 class="card-title" >Langue</h5>
-                     <div class="col-md-6">
+                      <h5 class="card-title">Langue</h5>
+                      <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Langue</option>
-                                <option value="1">FR</option>
-                                <option value="2">EN</option>
-                            </select>
-                            <label for="floatingSelectGrid">Sélectionner votre langue</label>
+                          <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="langue" id="langue" placeholder="Enter la langue" [(ngModel)]="form1.langue">
+                            <label for="langue">Langue</label>
+                          </div>
                         </div>
-                     </div>
-                     <div class="col-md-6">
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-floating mb-3">
-                                <input class="form-control" type="date" id="date-creation">
-                            <label for="floatingSelectGrid">Date-creation</label>
+                          <input class="form-control" type="date" id="datecreation" name="datecreation" [(ngModel)]="form1.datecreation">
+                          <label for="datecreation">Date de création</label>
                         </div>
-                     </div>
+                      </div>
                     </div>
                     <br>
                     <div class="row justify-content-end">
-                        <div class="col-sm-12">
-                            <div>
-                                <button type="submit" class="btn btn-primary w-md">Ajouter</button>
-                            </div>
+                      <div class="col-sm-12">
+                        <div>
+                          <button type="submit" class="btn btn-primary w-md">Ajouter</button>
                         </div>
+                      </div>
                     </div>
-                </form>
+                  </form>
+                  
             </div>
             <!-- end card body -->
         </div>

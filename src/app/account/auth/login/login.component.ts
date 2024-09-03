@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
  ngOnInit(): void {
  }
 
- path() {
-   this.router.navigate(["/"]);
- }
+//  path() {
+//    this.router.navigate(["/"]);
+//  }
 
  public Toggledata = true;
 
@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
    this.Toggledata = !this.Toggledata;
  }
 
- //METHODE PERMETTANT DE SE CONNECTER
  seConnecter(): void {
   const { telephoneOrEmail, password } = this.form;
   const swalWithBootstrapButtons = Swal.mixin({
@@ -80,46 +79,60 @@ export class LoginComponent implements OnInit {
     heightAuto: false
   });
 
-  // Appel du service AuthService pour gérer la connexion de l'utilisateur
-  this.authService.connexion(telephoneOrEmail, password).subscribe((data) => {
-    // Enregistrez les données de l'utilisateur dans le service de stockage (session storage ou autre)
-    this.storageService.saveUser(data);
+  this.authService.connexion(telephoneOrEmail, password).subscribe(
+    (data) => {
+      this.storageService.saveUser(data);
+      this.roles = this.storageService.getUser().roles;
 
-    console.log(data);
+      const hasRequiredRole = this.roles.includes('ROLE_ENTREPRISE') || this.roles.includes('ROLE_AUDITEUR');
 
-    // Réinitialisez les indicateurs d'erreur et définissez isLoggedIn à true
-    this.isLoginFailed = false;
-    this.isLoggedIn = true;
+      if (hasRequiredRole) {
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
 
-    // Obtenez les rôles de l'utilisateur à partir des données
-    this.roles = this.storageService.getUser().roles;
-
-      this.router.navigate(['/profil']).then(() => {
+        this.router.navigate(['/profil']).then(() => {
           window.location.reload();
         });
-    // Redirigez l'utilisateur vers la page d'accueil
-    // this.reloadPage()
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-    } else if (!this.storageService.isLoggedIn()) {
-      this.isLoginFailed = false;
+      } else {
+        swalWithBootstrapButtons.fire(
+          "",
+          `<h1 style='font-size: 1em !important; font-weight; bold; font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;'>Vous n'êtes pas autorisé à accéder à cette section</h1>`,
+          "error"
+        );
+
+        this.isLoginFailed = true;
+      }
+    },
+    (error) => {
+      let errorMessage = 'Erreur inconnue';
+
+      if (error.error && error.error.message) {
+        // Utilisez le message exact renvoyé par le backend
+        errorMessage = error.error.message;
+      } else if (error.status === 401) {
+        errorMessage = 'Mot de passe incorrect ou email non trouvé';
+      } else if (error.status === 403) {
+        errorMessage = 'Compte verrouillé ou désactivé';
+      } else if (error.status === 500) {
+        errorMessage = 'Erreur interne du serveur';
+      }
+
+      swalWithBootstrapButtons.fire(
+        "",
+        `<h1 style='font-size: 1em !important; font-weight; bold; font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;'>${errorMessage}</h1>`,
+        "error"
+      );
+
+      this.isLoginFailed = true;
     }
-  }, (error) => {
-    // Gestion des erreurs en cas d'échec de la connexion
-    const errorMessage = error.error && error.error.message ? error.error.message : 'Erreur inconnue';
-    console.log(error);
-
-    // Affichage d'une notification d'erreur à l'aide de la bibliothèque SweetAlert (Swal)
-    swalWithBootstrapButtons.fire(
-      "",
-      `<h1 style='font-size: 1em !important; font-weight; bold; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;'>${errorMessage}</h1>`,
-      "error"
-    );
-
-    // Définissez isLoginFailed à true pour indiquer que la connexion a échoué
-    this.isLoginFailed = true;
-  });
+  );
 }
+
+
+
+
+
+
 
  // Méthode pour changer l'onglet sélectionné
  changeTab(tab: string) {

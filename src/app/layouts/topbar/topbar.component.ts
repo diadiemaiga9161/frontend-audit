@@ -69,7 +69,7 @@ export class TopbarComponent implements OnInit {
     } else {
       this.flagvalue = val.map(element => element.flag);
     }
-    //methode pour la photo de nav
+    //methode pour la photo de navigateur
     this.User = this.storageService.getUser();
     console.log(this.User);
     if (this.storageService.isLoggedIn()) {
@@ -142,7 +142,8 @@ export class TopbarComponent implements OnInit {
   //    this.router.navigate(['/account/login']);
   // }
    //METHODE PERMETTANT DE SE DECONNECTER
-   logout(): void {
+     //METHODE PERMETTANT DE SE DECONNECTER
+  logout(): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn',

@@ -22,32 +22,22 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { PagesRoutingModule } from './pages-routing.module';
 
 import { DashboardsModule } from './dashboards/dashboards.module';
-import { EcommerceModule } from './ecommerce/ecommerce.module';
-import { CryptoModule } from './crypto/crypto.module';
+
 import { EmailModule } from './email/email.module';
-import { InvoicesModule } from './invoices/invoices.module';
-import { ProjectsModule } from './projects/projects.module';
-import { TasksModule } from './tasks/tasks.module';
 import { ContactsModule } from './contacts/contacts.module';
-import { BlogModule } from "./blog/blog.module";
-import { UtilityModule } from './utility/utility.module';
-import { UiModule } from './ui/ui.module';
-import { FormModule } from './form/form.module';
-import { TablesModule } from './tables/tables.module';
 import { IconsModule } from './icons/icons.module';
-import { ChartModule } from './chart/chart.module';
-import { CalendarComponent } from './calendar/calendar.component';
-import { MapsModule } from './maps/maps.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChatComponent } from './chat/chat.component';
 import { ProfilComponent } from './profil/profil.component';
-import { LoginComponent } from './login/login.component';
-import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { AjouterAuditComponent } from './ajouter-audit/ajouter-audit.component';
 import { AjouterReferentielsComponent } from './ajouter-referentiels/ajouter-referentiels.component';
+import { AjouterAuditeComponent } from './ajouter-audite/ajouter-audite.component';
+import { GestionAuditsComponent } from './gestion-audits/gestion-audits.component';
+import { ApexComponent } from './chart/apex/apex.component';
+import { AjouterCampagneComponent } from './ajouter-campagne/ajouter-campagne.component';
+import { CampagnesComponent } from './campagnes/campagnes.component';
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent, FilemanagerComponent,ProfilComponent,LoginComponent,AjouterAuditComponent],
+  declarations: [ProfilComponent,AjouterAuditComponent,AjouterAuditeComponent,GestionAuditsComponent,AjouterReferentielsComponent,ApexComponent,AjouterCampagneComponent,CampagnesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -57,24 +47,12 @@ import { AjouterReferentielsComponent } from './ajouter-referentiels/ajouter-ref
     NgApexchartsModule,
     ReactiveFormsModule,
     DashboardsModule,
-    CryptoModule,
-    EcommerceModule,
     EmailModule,
-    InvoicesModule,
     HttpClientModule,
-    ProjectsModule,
     UIModule,
-    TasksModule,
     ContactsModule,
-    BlogModule,
-    UtilityModule,
-    UiModule,
-    FormModule,
-    TablesModule,
     IconsModule,
-    ChartModule,
     WidgetModule,
-    MapsModule,
     FullCalendarModule,
     TabsModule.forRoot(),
     TooltipModule.forRoot(),

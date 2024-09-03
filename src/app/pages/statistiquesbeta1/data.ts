@@ -1,4 +1,4 @@
-import { ChartType } from './apex.model';
+import { ChartType } from "./apex.model";
 
 const linewithDataChart: ChartType = {
     chart: {

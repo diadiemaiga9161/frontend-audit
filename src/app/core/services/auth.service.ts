@@ -93,8 +93,9 @@ export class AuthenticationService {
     //     // logout the user
     //     getFirebaseBackend().logout();
     // }
-     //METHODE PERMETTANT DE SE DECONNECTER
-  logout(): void {
+  //    METHODE PERMETTANT DE SE DECONNECTER
+   //METHODE PERMETTANT DE SE DECONNECTER
+   logout(): void {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn',
@@ -104,7 +105,7 @@ export class AuthenticationService {
     })
     swalWithBootstrapButtons.fire({
       // title: 'Etes-vous sûre de vous déconnecter?',
-      text: "Etes-vous sûre de vous déconnecternnnn?",
+      text: "Etes-vous sûre de vous déconnecter?",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmer',

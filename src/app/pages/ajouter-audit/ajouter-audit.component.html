@@ -1,99 +1,120 @@
- <!-- end row -->
- <div class="row">
+<!-- start row -->
+<div class="row">
     <div class="col-xl-12">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Nouvel audit</h5>
-                <!-- <p class="card-title-desc">Create beautifully simple form labels that float over your input fields.</p> -->
-
-                <form #f="ngForm"  novalidate>
-                    <div class="col-md-12">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Type d'audits</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Types d'audits</label>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <h5 class="card-title" >Audites</h5>
-                     <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>......</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Sélectionner un audité</label>
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Type d'audits</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Sélectionner les sites</label>
-                        </div>
-                     </div>
-                    </div>
-                    <h5 class="card-title" >Langue</h5>
-                    <div class="form-floating mb-3">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Langue de l'audit</option>
-                                <option value="1">Francais</option>
-                                <option value="2">Anglais</option>
-                            </select>
-                            <label for="floatingSelectGrid">Langue</label>
-                        </div>
-                    </div>
-                    <h5 class="card-title" >Référentiels</h5>
-                     <div class="col-md-12">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                    <option selected>Site a Audites</option>
-                                    <option value="1">AWD</option>
-                                    <option value="2">ODC</option>
-                                </select>
-                                <label for="floatingSelectGrid">Sélectionner les référentiels</label>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <h5 class="card-title" >Conformites</h5>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                    <option selected>Conformites</option>
-                                    <option value="1">Test</option>
-                                    <option value="2">Test1</option>
-                                </select>                                
-                                <label for="floatingemailInput">Nom</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                    <option selected>Version</option>
-                                    <option value="1">1.5</option>
-                                    <option value="2">1.10</option>
-                                </select>
-                                <label for="floatingemailInput">Version:</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="btn btn-primary w-md">Envoyer</button>
-                    </div>
-                </form>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Nouvel audit</h5>
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="col-md-12">
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="id_typeAudit" name="typeAudit" [(ngModel)]="form.id_typeAudit" required>
+                        <option value="" disabled selected>Type d'audits</option>
+                        <option *ngFor="let typeAudit of typeAudit" [value]="typeAudit.id">
+                            {{typeAudit.nom}}
+                        </option>
+                    </select>
+                    <label for="id_typeAudit">Types d'audits</label>
+                </div>
             </div>
-            <!-- end card body -->
+            <div class="col-md-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="conformite" name="conformite" [(ngModel)]="form.conformite" required>
+                    <label for="conformite">Conformité</label>
+                </div>
+            </div>
+        
+            <div class="row">
+                <h5 class="card-title">Audites</h5>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="id_audites" name="audites" [(ngModel)]="form.id_audites" required>
+                            <option value="" disabled selected>Audites</option>
+                            <option *ngFor="let audites of audites" [value]="audites.id">
+                                {{audites.siteaudite}}
+                            </option>
+                        </select>
+                        <label for="id_audites">Sélectionner un audité</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="id_echelle" name="echelle" [(ngModel)]="form.id_echelle" required>
+                            <option value="" disabled selected>Sélectionner une Échelle</option>
+                            <option *ngFor="let echelle of echelle" [value]="echelle.id">
+                                {{echelle.nom}}
+                            </option>
+                        </select>
+                        <label for="id_echelle">Sélectionner une Échelle</label>
+                    </div>
+                </div>
+            </div>
+        
+            <h5 class="card-title">Langue</h5>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="langue" name="langue" [(ngModel)]="form.langue" required>
+                <label for="langue">Langue</label>
+            </div>
+            <h5 class="card-title">Statut d'Audit</h5>
+            <div class="form-floating mb-3">
+                <select class="form-select" id="statutAudit" name="statutAudit" [(ngModel)]="form.id_statutAudit" required>
+                    <option value="" disabled selected>Status Audite</option>
+                    <option *ngFor="let statut of statutaudit" [value]="statut.id">
+                        {{statut.nom}}
+                    </option>
+                </select>
+                <label for="statutAudit">Statut d'Audit</label>
+            </div>
+            <h5 class="card-title">Date début</h5>
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="datedebut" name="datedebut" [(ngModel)]="form.datedebut" required>
+                <label for="datedebut">Date début</label>
+            </div>
+            <h5 class="card-title">Date fin</h5>
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="datefin" name="datefin" [(ngModel)]="form.datefin" required>
+                <label for="datefin">Date fin</label>
+            </div>
+        
+            <h5 class="card-title">Référentiels</h5>
+            <div class="col-md-12">
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="id_referentiel" name="referentiel" [(ngModel)]="form.referentiel" required>
+                        <option value="" disabled selected>Référentiel</option>
+                        <option *ngFor="let referentiel of referentiel" [value]="referentiel.id">
+                            {{referentiel.referentiel}}
+                        </option>
+                    </select>
+                    <label for="id_referentiel">Sélectionner les référentiels</label>
+                </div>
+            </div>
+        
+            <div class="row">
+                <h5 class="card-title">Conformités</h5>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="tauxconformite" name="tauxconformite" [(ngModel)]="form.tauxconformite" required>
+                        <label for="tauxconformite">Taux de conformité</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="version" name="version" [(ngModel)]="form.version" required>
+                        <label for="version">Version</label>
+                    </div>
+                </div>
+            </div>
+        
+            <div>
+                <button type="submit" class="btn btn-primary w-md">Ajouter</button>
+            </div>
+        </form>
+        
         </div>
-        <!-- end card -->
+        <!-- end card body -->
+      </div>
+      <!-- end card -->
     </div>
     <!-- end col -->
-</div>
-<!-- end row -->
+  </div>
+  <!-- end row -->
+  

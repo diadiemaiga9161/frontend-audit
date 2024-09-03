@@ -1,12 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { StorageService } from '../storage/storage.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CookieService } from 'ngx-cookie-service';
-import { StorageService } from '../storage/storage.service';
+// import { CookieService } from 'ngx-cookie-service';
 
 // Définition de l'URL de base de l'API
-const API_URL = 'http://localhost:8380/api/test/';
+const API_URL = 'http://localhost:8080/api/test/';
 const URL_BASE: string = environment.Url_BASE;
 const USER_KEY = 'auth-user';
 
@@ -15,7 +15,7 @@ const USER_KEY = 'auth-user';
 })
 export class UserService {
 
-  getAuditeur // Récupération du jeton CSRF depuis le cookie (commenté car non utilisé dans le code actuel)
+  getInformaticien // Récupération du jeton CSRF depuis le cookie (commenté car non utilisé dans le code actuel)
     () {
     throw new Error('Method not implemented.');
   }
@@ -60,23 +60,46 @@ export class UserService {
     console.log(headers);
     return this.http.get(`${URL_BASE}user/afficherinfo`, { headers });
   }
-  
- // Méthode pour afficher la liste des auditeurs
- AfficherListeUser(): Observable<any> {
-  return this.http.get(`${URL_BASE}user/byRole/ROLE_AUDITEUR`);
-}
- // Méthode pour afficher la liste des ENTREPRISE
- AfficherListeUsers(): Observable<any> {
-  return this.http.get(`${URL_BASE}user/byRole/ROLE_ENTREPRISE`);
-}
 
+  // Méthode pour afficher la liste des informaticiens
+  AfficherListeAuditeurs(): Observable<any> {
+    return this.http.get(`${URL_BASE}user/byRole/ROLE_AUDITEUR`);
+  }
+
+   // Méthode pour afficher la liste des client
+   AfficherListeEntreprise(): Observable<any> {
+    return this.http.get(`${URL_BASE}user/byRole/ROLE_ENTREPRISE`);
+  }
+
+
+  listeAudites(): Observable<any> {
+    const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+    return this.http.get(`${URL_BASE}audites/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+  }
+
+    // Méthode pour afficher la liste des referentiel
+    AfficherListReferentiel(): Observable<any> {
+      const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+      return this.http.get(`${URL_BASE}referentiel/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+    }
+
+  listeUtilisateur(): Observable<any> {
+    return this.http.get(`${URL_BASE}user/afficher`);
+  }
+
+
+
+  // Méthode pour afficher un auditeur en fonction de son ID
+  AfficherUserParId(id: number): Observable<any> {
+    return this.http.get(`${URL_BASE}user/userparid/${id}`);
+  }
 
   // Méthode pour modifier le profil de l'utilisateur
   modifierProfilUser(
     nom: string,
     prenom: string,
     telephone: string,
-    genre: string,
+    adresse: string,
     email: string,
   ): Observable<any> {
     const headers = this.getHeaders();
@@ -86,7 +109,7 @@ export class UserService {
         nom,
         prenom,
         telephone,
-        genre,
+        adresse,
         email,
       },
       { headers }

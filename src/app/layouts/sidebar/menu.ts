@@ -16,7 +16,7 @@ export const MENU: MenuItem[] = [
 
     {
         id: 11,
-        label: 'Campagnes',
+        label: 'Rapport',
         icon: 'bx bx-news',
         link: '/campagnes',
         
@@ -58,12 +58,12 @@ export const MENU: MenuItem[] = [
                 link: '/statistiques',
                 parentId: 2
             },
-            {
-                id: 4,
-                label: 'Cross-référentiels',
-                link: '/crossreferentiels',
-                parentId: 2
-            },
+            // {
+            //     id: 4,
+            //     label: 'Cross-référentiels',
+            //     link: '/crossreferentiels',
+            //     parentId: 2
+            // },
         ]
     },
 
@@ -75,13 +75,13 @@ export const MENU: MenuItem[] = [
         
     },
 
-    {
-        id: 11,
-        label: 'Échelles',
-        icon: 'bx bxs-bar-chart-alt-2',
-        link: '/echelles',
+    // {
+    //     id: 11,
+    //     label: 'Échelles',
+    //     icon: 'bx bxs-bar-chart-alt-2',
+    //     link: '/echelles',
         
-    },
+    // },
 
 
     {

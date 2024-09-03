@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuditService } from 'src/app/core/services/audit/audit.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { ReferentielService } from 'src/app/core/services/referentiel/referentiel.service';
 import { StorageService } from 'src/app/core/services/storage/storage.service';
@@ -17,11 +18,15 @@ export class ReferentielsComponent {
   User: any;
   form: any;
   referentiel: any;
+  audit: any;
+  nombreAudit: any;
+  nombreAuditEncours: any;
   constructor(
     private serviceUser: UserService,
     private storageService: StorageService,
     private referentielService: ReferentielService,
     private authService: AuthService,
+    private auditService: AuditService,
 
     private router: Router,
   ) {
@@ -46,13 +51,24 @@ export class ReferentielsComponent {
     dervnierversion: null,
     langue: null,
     datecreation: null,
-    idinf: null
   };
   ngOnInit(): void {
  // AFFICHER LA LISTE DES referentiel
  this.referentielService.AfficherListReferentiel().subscribe(data => {
   this.referentiel = data;
   console.log(this.referentiel);
+});
+
+this.auditService.AfficherListAudit().subscribe(data => {
+  this.audit = data;
+  this.nombreAudit = this.audit.length;  // Nombre total d'audites
+
+  // Compter le nombre d'audites avec statut 'Encoure'
+  this.nombreAuditEncours = this.audit.filter(audit => audit.statutAudit === 'Encoure').length;
+
+  console.log(this.audit);
+  console.log('Nombre total d\'audites:', this.nombreAudit);
+  console.log('Nombre d\'audites en cours:', this.nombreAuditEncours);
 });
 }
 

@@ -16,7 +16,13 @@ export class AjouterReferentielsComponent {
   id: any;
   User: any;
   form: any;
-  referentiel: any;
+  // referentiel: any;
+  referentiel: any = {};
+  finalite: string = '';
+  nom: string = '';
+  dervnierversion: string = '';
+  langue: string = '';
+  datecreation: string = '';
   constructor(
     private serviceUser: UserService,
     private storageService: StorageService,
@@ -46,7 +52,6 @@ export class AjouterReferentielsComponent {
     dervnierversion: null,
     langue: null,
     datecreation: null,
-    idinf: null
   };
   ngOnInit(): void {
  // AFFICHER LA LISTE DES referentiel
@@ -56,13 +61,36 @@ export class AjouterReferentielsComponent {
 });
 }
 
-submitForm1(form1:NgForm){
-  this.referentielService.Ajouter(this.form1.referentiel, this.form1.finalite, this.form1.nom, this.form1.dervnierversion,this.form1.langue,this.form1.datecreation,this.form1.idinf).subscribe((data) => {
-    // Enregistrez les données de l'utilisateur dans le service de stockage (session storage ou autre).
-    console.log(data);
-    console.log(this.referentiel.id);
-    location.reload();
-  });
+// submitForm1(form1:NgForm){
+//   this.referentielService.Ajouter(this.form1.referentiel, this.form1.finalite, this.form1.nom, this.form1.dervnierversion,this.form1.langue,this.form1.datecreation).subscribe((data) => {
+//     // Enregistrez les données de l'utilisateur dans le service de stockage (session storage ou autre).
+//     console.log(data);
+//     console.log(this.referentiel.finalite);
+//     location.reload();
+//   });
+// }
+
+submitForm1(form1: NgForm) {
+  // Récupérer les valeurs du formulaire
+  const referentiel = form1.value.referentiel;
+  const finalite = form1.value.finalite;
+  const nom = form1.value.nom;
+  const dervnierversion = form1.value.dervnierversion;
+  const langue = form1.value.langue;
+  const datecreation = form1.value.datecreation;
+
+  // Appeler le service pour ajouter le référentiel
+  this.referentielService.Ajouter(referentiel, finalite, nom, dervnierversion, langue, datecreation)
+    .subscribe((data) => {
+      console.log('Référentiel ajouté avec succès:', data);
+      console.log('Finalité:', finalite);
+      
+      // Recharger la page après l'ajout
+      location.reload();
+    }, (error) => {
+      console.error('Erreur lors de l\'ajout du référentiel:', error);
+    });
 }
+
 
 }

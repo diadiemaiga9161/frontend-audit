@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuditService } from 'src/app/core/services/audit/audit.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { StorageService } from 'src/app/core/services/storage/storage.service';
 import { TypeauditeurService } from 'src/app/core/services/typeauditeur/typeauditeur.service';
@@ -43,12 +44,19 @@ export class ProfilComponent {
   typeauditeur: any;
   User: any;
   form: any;
+  nombreAudits: number = 0;
+  nombreAuditesEncours: number = 0;
+  nombreAudites: number = 0;
+  nombreAudit: number= 0;
   datecreation:any;
   isSuccessful = false;
   isSignUpFailed = false;
   profileImageUrl: string = ''; // Variable pour stocker le chemin de l'image de profil
   errorMessage = '';
   id_utilisateur: any;
+nombreAuditEncours: any;
+  audit: any;
+  nombreAuditFais: any;
 
 
 
@@ -57,6 +65,7 @@ export class ProfilComponent {
     private storageService: StorageService,
     private authService: AuthService,
     private router: Router,
+    private auditService: AuditService,
   ) {
 
     this.User = this.storageService.getUser();
@@ -82,11 +91,47 @@ export class ProfilComponent {
     //   this.typeauditeur = data?.typeauditeur;
     //   console.log(this.auditeur);
     // });
+
+    this.auditService.AfficherListAudit().subscribe(data => {
+      this.audit = data;
+      this.nombreAudit = this.audit.length;  // Nombre total d'audites
+    
+      // Compter le nombre d'audites avec statut 'Encoure'
+      this.nombreAuditEncours = this.audit.filter(audit => audit.statutAudit === 'Encour ').length;
+    
+      console.log(this.audit);
+      console.log('Nombre total d\'audites:', this.nombreAudit);
+      console.log('Nombre d\'audites en cours:', this.nombreAuditEncours);
+    });
+
+
+    this.auditService.AfficherListAudit().subscribe(data => {
+      this.audit = data;
+      this.nombreAudit = this.audit.length;  // Nombre total d'audites
+    
+      // Compter le nombre d'audites avec statut 'Encoure'
+      this.nombreAuditFais = this.audit.filter(audit => audit.statutAudit === 'Terminer').length;
+    
+      console.log(this.audit);
+      console.log('Nombre total d\'audites:', this.nombreAudit);
+      console.log('Nombre d\'audites fais:', this.nombreAuditFais);
+    });
   }
 
   handleAuthorImageError(event: any) {
     event.target.src = 'assets/images/diadie.jpg';
   }
+
+   // Méthode pour retirer le préfixe "ROLE_"
+   getRoleName(role: string): string {
+    return role.replace('ROLE_', '');
+  }
+
+  // Méthode pour vérifier si l'utilisateur a le rôle "Entreprise"
+  hasEntrepriseRole(): boolean {
+    return this.User?.roles.some(role => this.getRoleName(role) === 'ENTREPRISE');
+  }
+  
 
 generateImageUrl(photoFileName: string): string {
     const baseUrl = URL_PHOTO;

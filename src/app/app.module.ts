@@ -36,13 +36,14 @@ import { GestionProfileComponent } from './pages/gestion-profile/gestion-profile
 import { GestionAuditsComponent } from './pages/gestion-audits/gestion-audits.component';
 import { AuditsCoursComponent } from './pages/audits-cours/audits-cours.component';
 import { ReferentielsComponent } from './pages/referentiels/referentiels.component';
-import { StatistiquesbetaComponent } from './pages/statistiquesbeta/statistiquesbeta.component';
+import { StatistiquesbetaComponent } from './pages/statistiquesbeta1/statistiquesbeta.component';
 import { CrossReferentielsComponent } from './pages/cross-referentiels/cross-referentiels.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { AjouterAuditeComponent } from './pages/ajouter-audite/ajouter-audite.component';
 import { AjouterCampagneComponent } from './pages/ajouter-campagne/ajouter-campagne.component';
 import { AjouterAuditComponent } from './pages/ajouter-audit/ajouter-audit.component';
 import { AjouterReferentielsComponent } from './pages/ajouter-referentiels/ajouter-referentiels.component';
+import { AuditesComponent } from './pages/audites/audites.component';
 
 if (environment.Url_BASE === 'firebase') {
   initFirebaseBackend(environment.Url_BASE);
@@ -60,17 +61,13 @@ export function createTranslateLoader(http: HttpClient): any {
     AppComponent,
     CyptolandingComponent,
     EchellesComponent,
-    CampagnesComponent,
     AccueilComponent,
-    GestionProfileComponent,
-    GestionAuditsComponent,
     AuditsCoursComponent,
+    AuditesComponent,
     ReferentielsComponent,
     StatistiquesbetaComponent,
     CrossReferentielsComponent,
-    AjouterAuditeComponent,
-    AjouterCampagneComponent,
-    AjouterReferentielsComponent,
+
   ],
   imports: [
     BrowserModule,

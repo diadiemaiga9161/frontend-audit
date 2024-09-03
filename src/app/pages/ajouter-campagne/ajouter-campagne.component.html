@@ -3,39 +3,72 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Nouvel Campagne</h5>
+                <h5 class="card-title">Nouvel Rapport</h5>
                 <!-- <p class="card-title-desc">Create beautifully simple form labels that float over your input fields.</p> -->
 
-                <form>
+                <form >
+                    <!-- Champ Titre -->
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingnameInput" placeholder="Enter Nom de l'audites">
-                        <label for="floatingnameInput">Nom de l'audites</label>
+                      <input type="text" class="form-control" id="floatingTitreInput" placeholder="Enter le titre" [(ngModel)]="formData.titre" name="titre" required>
+                      <label for="floatingTitreInput">Titre</label>
                     </div>
+                  
+                    <!-- Champ Description -->
                     <div class="row">
-                        <div class="col-12">
-                          <div class="card">
-                            <label for="floatingnameInput">Description</label>
-                            <div>
-                                <textarea formControlName="textarea" class="form-control" rows="5"
-                                 ></textarea>
-                              </div>
+                      <div class="col-12">
+                        <div class="card">
+                          <label for="floatingDescription">Description</label>
+                          <div>
+                            <textarea class="form-control" rows="5" [(ngModel)]="formData.description" name="description" required></textarea>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-12">
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                                <option selected>Audites</option>
-                                <option value="1">AWD</option>
-                                <option value="2">ODC</option>
-                            </select>
-                            <label for="floatingSelectGrid">Ajout des Audites</label>
-                        </div>
                     </div>
+                  
+                    <!-- Champ Remarques -->
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingRemarquesInput" placeholder="Enter les remarques" [(ngModel)]="formData.remarques" name="remarques">
+                      <label for="floatingRemarquesInput">Remarques</label>
+                    </div>
+                  
+                    <!-- Champ Subjection -->
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingSubjectionInput" placeholder="Enter la subjection" [(ngModel)]="formData.subjection" name="subjection">
+                      <label for="floatingSubjectionInput">Subjection</label>
+                    </div>
+                  
+                    <!-- Champ Date début -->
+                    <div class="form-floating mb-3">
+                      <input type="date" class="form-control" id="floatingStartDateInput" placeholder="Enter la date de début" [(ngModel)]="formData.datedebut" name="datedebut" required>
+                      <label for="floatingStartDateInput">Date début</label>
+                    </div>
+                  
+                    <!-- Champ Date fin -->
+                    <div class="form-floating mb-3">
+                      <input type="date" class="form-control" id="floatingEndDateInput" placeholder="Enter la date de fin" [(ngModel)]="formData.datefin" name="datefin" required>
+                      <label for="floatingEndDateInput">Date fin</label>
+                    </div>
+                  
+                    <!-- Champ Audites -->
+                    <div class="col-md-12">
+                      <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelectGrid" (change)="onChange($event)" name="audites" required>
+                          <option selected disabled>Choisir Audites</option>
+      <option *ngFor="let Audites of audites" [value]="Audites.id">
+        {{Audites.siteaudite}}
+      </option>
+                          
+                        </select>
+                        <label for="floatingSelectGrid">Ajout des Audites</label>
+                      </div>
+                    </div>
+                  
+                    <!-- Bouton d'envoi -->
                     <div>
-                        <button type="submit" class="btn btn-primary w-md">Envoyer</button>
+                      <button type="submit" (click)="onSubmit()"  class="btn btn-primary w-md">Ajouter</button>
                     </div>
-                </form>
+                  </form>
+                  
             </div>
             <!-- end card body -->
         </div>

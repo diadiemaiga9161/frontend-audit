@@ -57,11 +57,11 @@
 
                 <div class="row">
                   <div class="col-6">
-                    <h5 class="font-size-15">10</h5>
-                    <p class="text-muted mb-0">Audits en cours</p>
+                    <h5 class="font-size-15">{{ nombreAuditEncours }}</h5>
+                    <p class="text-muted mb-0">Audits en cours </p>
                   </div>
                   <div class="col-6">
-                    <h5 class="font-size-15">5</h5>
+                    <h5 class="font-size-15">{{ nombreAuditFais }}</h5>
                     <p class="text-muted mb-0">Audites fini</p>
                   </div>
                 </div>
@@ -94,7 +94,16 @@
                 </tr>
                 <tr>
                   <th scope="row">Type d'utilisateur:</th>
-                  <td>{{User?.roles}}</td>
+                  <td>
+                    <ul>
+                      <li *ngFor="let role of User?.roles">{{ getRoleName(role) }}</li>
+                    </ul>
+                  </td>
+                  
+                  <td *ngIf="!hasEntrepriseRole()">
+                    <!-- Afficher la spécialité seulement si l'utilisateur n'a pas le rôle "Entreprise" -->
+                    {{User?.specialite?.typeAuditeur}}
+                  </td>
                 </tr>
               </tbody>
             </table>

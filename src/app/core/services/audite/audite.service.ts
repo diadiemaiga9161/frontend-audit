@@ -20,8 +20,8 @@ export class AuditeService {
     private storageService: StorageService,  // Injection du service de stockage local
   ) { }
 
- // Méthode pour définir le jeton d'accès
- setAccessToken(token: string) {
+// Méthode pour définir le jeton d'accès
+setAccessToken(token: string) {
   this.accessToken = token;  // Affecte la valeur du jeton d'accès reçu à la variable privée accessToken
 }
 
@@ -33,19 +33,61 @@ getHeaders(): HttpHeaders {
   });
 }
 
-  // Méthode pour effectuer la connexion
-Ajouteraudit(tauxconformite: any, datedebut: any, datefin: any, conformite: any,typeAudit: any, id_utilisateur: any): Observable<any> {
+
+// Ajouteraudit(tauxconformite: any, datedebut: any, datefin: any, conformite: any,typeAudit: any, id_utilisateur: any): Observable<any> {
+//   const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+//   const data = { 
+//     "tauxconformite" : tauxconformite,
+//     "datedebut" : datedebut,
+//     "datefin" : datefin,
+//     "conformite" : conformite,
+//     "typeAudit" : typeAudit,
+//     "id_utilisateur" : id_utilisateur
+//   };
+//   return this.http.post(
+//     URL_BASE + 'audit/ajouter',data, { headers }
+//   );
+// }
+
+// Méthode pour effectuer l'ajout 
+ajouteraudites(audite: any, siteaudite: any,description:any): Observable<any> {
   const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
-  const data = { 
-    "tauxconformite" : tauxconformite,
-    "datedebut" : datedebut,
-    "datefin" : datefin,
-    "conformite" : conformite,
-    "typeAudit" : typeAudit,
-    "id_utilisateur" : id_utilisateur
-  };
-  return this.http.post(
-    URL_BASE + 'audit/ajouter',data, { headers }
-  );
+  const formData = new FormData();
+    formData.append('audite', audite);
+    formData.append('siteaudite', siteaudite);
+    formData.append('description', description);
+  console.log(audite);
+  console.log(siteaudite);
+
+  console.log(description);
+
+  console.log(headers);
+  
+  
+  return this.http.post( URL_BASE + 'audites/ajouter',formData, { headers }
+ );
 }
+// Méthode pour afficher la liste des referentiel
+AfficherListAudites(): Observable<any> {
+  const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+  return this.http.get(`${URL_BASE}audites/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+}
+
+
+
+ajouter(data: any): Observable<any> {
+  const headers = this.getHeaders();
+  const formData = new FormData();
+  formData.append('audite', data.audite);
+  formData.append('siteaudite', data.siteaudite);
+  formData.append('description', data.description);
+
+  console.log(formData);
+  console.log('data', data);
+
+  console.log('data', headers);
+
+  return this.http.post(URL_BASE  + 'audites/ajouter',formData, { headers });
+}
+
 }

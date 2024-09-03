@@ -6,12 +6,12 @@
                 <h5 class="card-title">Nouvel audité</h5>
                 <!-- <p class="card-title-desc">Create beautifully simple form labels that float over your input fields.</p> -->
 
-                <form>
+                <form >
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingnameInput" placeholder="Enter Name" value="Maria Laird">
-                        <label for="floatingnameInput">Nom de l'audites</label>
+                        <input type="text" class="form-control"  name="audite" id="audite" placeholder="Enter le nom de l'audite" [(ngModel)]="formData.audite">
+                        <label for="Audite">Nom de l'audites</label>
                     </div>
-                     <div class="col-md-12">
+                     <!-- <div class="col-md-12">
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
                                     <option selected>Site a Audites</option>
@@ -20,18 +20,18 @@
                                 </select>
                                 <label for="floatingSelectGrid">Works with selects</label>
                             </div>
-                        </div>
+                        </div> -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingemailInput" placeholder="Enter Email address" value="name@example.com">
-                                <label for="floatingemailInput">Nom du site a audites</label>
+                                <input type="text" class="form-control"  name="siteaudite" id="siteaudite" placeholder="Enter le nom de l'audite" [(ngModel)]="formData.siteaudite">
+                                <label for="siteaudite">Nom du site a audites</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="description" placeholder="Description" value="name@example.com">
-                                <label for="floatingemailInput">Description du site a audites</label>
+                                <input type="text" class="form-control" name="description" id="description" placeholder="Description" [(ngModel)]="formData.description">
+                                <label for="Description">Description du site a audites</label>
                             </div>
                         </div>
                         <!-- <div class="col-md-6">
@@ -57,7 +57,8 @@
                         </div> -->
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary w-md">Envoyer</button>
+                        <!-- <a  (click)="onSubmit()">Enn</a> -->
+                        <button type="submit" class="btn btn-primary w-md" (click)="onSubmit()">Ajouter</button>
                     </div>
                 </form>
             </div>

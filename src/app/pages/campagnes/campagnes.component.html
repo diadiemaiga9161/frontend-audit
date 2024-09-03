@@ -5,8 +5,8 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link px-4 active" data-bs-toggle="tab" href="#Campagne" role="tab"
                         aria-selected="false" tabindex="1">
-                        <span class="d-block d-sm-none"><i class="fas fa-home">Mes-campagne</i></span>
-                        <span class="d-none d-sm-block">Mes-campagne</span>
+                        <span class="d-block d-sm-none"><i class="fas fa-home">Mes-rapport</i></span>
+                        <span class="d-none d-sm-block">Mes-Rapport</span>
                     </a>
                 </li>
             </ul>
@@ -14,37 +14,48 @@
                 <div class="tab-pane active show" id="Campagne" role="tabpanel">
                     <h5 class="mb-3"></h5>
                     <div class="flex-shrink-0 d-flex gap-1">
-                        <a href="/ajouter-campagne" class="btn btn-primary">Nouvelle campagne</a>
+                        <a href="/ajouter-campagne" class="btn btn-primary">Nouveau Rapport</a>
                       </div>
                       <br>
+                      <!-- <button (click)="rapportid1()" class="btn btn-primary">Télécharger le PDF</button> -->
                     <div class="table-responsive">
                         <table id="basic-datatable"
                           class="table table-bordered dt-responsive nowrap datatables no-footer dtr-inline">
                           <thead>
-                            <tr>
-                              <th>Campagne_Id</th>
-                              <th sortable="name" >Contient des audits</th>
-                              <th sortable="position" >Titre</th>
+                            <tr >
+                              <th>Id-Rapport</th>
+                              <th sortable="name" >Titre</th>
+                              <!-- <th sortable="position" >Description</th> -->
                               <th sortable="position" >Date_debut</th>
-                              <th sortable="position" >Protection</th>
-                              <th sortable="position" >Audits</th>
+                              <th sortable="position" >Date_fin</th>
+                              <th sortable="position" >Remarques</th>
+                              <th sortable="position" >Site Audites</th>
+                              <th sortable="position" >Action</th>
                               <!-- <th>Actions</th> -->
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>01</td>
-                              <td>Nom</td>
-                              <td>Site_web</td>
-                              <td>25/10/2023</td>
-                              <td>Protege</td>
-                              <td>AWD</td>
+                            <tr *ngFor="let rapport of rapport">
+                              <td>{{rapport?.id}}</td>
+                              <td>{{rapport?.titre}}</td>
+                              <!-- <td>{{rapport?.description}}</td> -->
+                              <td>{{rapport?.datedebut | date: 'yyyy-MM-dd'}}</td>
+                              <td>{{rapport?.datefin | date: 'yyyy-MM-dd'}}</td>
+                              <td>{{rapport?.remarques}}</td>
+                              <td><li *ngFor="let audite of audites">
+                                {{ audite.siteaudite }}
+                              </li></td>
 
-                              <!-- <td>
+
+                            
+
+                              <td>
                                   <ul class="list-unstyled hstack gap-1 mb-0">
                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
-                                      <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
-                                    </li>
+                                      <a (click)="scrollModal(scrollable, { idRapport: rapport?.id })" class="btn btn-sm btn-soft-primary">
+                                        <i class="mdi mdi-eye-outline"></i>
+                                      </a>
+                                      
                                     <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
                                       <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
                                     </li>
@@ -52,7 +63,7 @@
                                       <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
                                     </li>
                                   </ul>
-                                </td> -->
+                                </td>
                             </tr>
                           </tbody>
                         </table>
@@ -67,3 +78,49 @@
                 </div>
         </div>
     </div>
+
+
+  
+    <!-- Modal Template -->
+<ng-template #scrollable let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Détails du Rapport</h5>
+   
+    
+    <button type="button" class="btn-close" (click)="modal.hide()"></button>
+    
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Date Début</th>
+          <th>Date Fin</th>
+          <th>Remarques</th>
+          <th>Subjection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="rapportParId">
+          <td>{{rapportParId.id}}</td>
+          <td>{{rapportParId.titre}}</td>
+          <td>{{rapportParId.datedebut | date: 'yyyy-MM-dd'}}</td>
+          <td>{{rapportParId.datefin | date: 'yyyy-MM-dd'}}</td>
+          <td>{{rapportParId.remarques}}</td>
+          <td>{{rapportParId.subjection}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Quitter</button>
+    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+    <button (click)="rapportid1()" class="btn btn-primary">
+      Télécharger Le rapport 
+    </button>
+</div>
+</ng-template>
+
+  
