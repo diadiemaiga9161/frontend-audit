@@ -39,6 +39,12 @@ export class GestionauditesService {
      const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
      return this.http.get(`${URL_BASE}audit/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
    }
+
+        // Méthode pour afficher la liste des rapport  par id
+        ListesGestionauditid(id: number): Observable<any> {
+          const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+          return this.http.get(`${URL_BASE}audit/afficherparid/${id}`, { headers }); // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+      }
  
   //  Ajouter(referentiel: any, finalite: any, nom: any, lieux: any, dervnierversion: any,langue: any,datecreation: any,): Observable<any> {
   //    const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès

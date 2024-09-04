@@ -84,8 +84,8 @@
                     <td>
                       <ul class="list-unstyled hstack gap-1 mb-0">
                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
-                          <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
-                        </li>
+                          <a (click)="scrollModal(scrollable, { idReferentiel: Referentiel?.id })" class="btn btn-sm btn-soft-primary"><i
+                            class="mdi mdi-eye-outline"></i></a>                     </li>
                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
                           <a href="javascript:void(0);" class="btn btn-sm btn-soft-info" ><i class="mdi mdi-pencil-outline"></i></a>
                         </li>
@@ -119,4 +119,47 @@
   </div>
   
    
+
+  <ng-template #scrollable let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">Détails du Rapport</h5>
+     
+      
+      <button type="button" class="btn-close" (click)="modal.hide()"></button>
+      
+    </div>
+    <div class="modal-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Referentiele</th>
+            <th scope="col">Finalise</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Version</th>
+            <th scope="col">Langue</th>
+            <!-- <th scope="col">Date-creation</th> -->
+          </tr>
+        </thead>
+        <tbody> 
+          <tr *ngIf="referentielParId">
+            <th scope="row">{{referentielParId?.referentiel}}</th>
+                    <td ><span class="badge bg-success">{{referentielParId?.finalite}}</span></td>
+                    <td>{{referentielParId?.nom}}</td>
+                    <td>{{referentielParId?.dervnierversion}}</td>
+                    <td>{{referentielParId?.langue}}</td>
+                    <!-- <td [attr.data-date]="referentielParId?.datecreation | date: 'yyyy-MM-dd'">{{Referentiel?.datecreation | date: 'dd-MM-yyyy'}}</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Quitter</button>
+      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      <button (click)="rapportid1()" class="btn btn-primary">
+        Télécharger Le rapport 
+      </button>
+  </div>
+  </ng-template>
+  
+    <!-- fin  -->
   

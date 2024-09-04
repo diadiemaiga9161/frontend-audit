@@ -41,6 +41,13 @@ getHeaders(): HttpHeaders {
     return this.http.get(`${URL_BASE}referentiel/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
   }
 
+    // Méthode pour afficher la liste des referentiel
+    AfficherListReferentielparid(id: number): Observable<any> {
+      const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+      return this.http.get(`${URL_BASE}referentiel/afficherparid/${id}`,{ headers }); // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+
+    }
+
   Ajouter(referentiel: any, finalite: any, nom: any,dervnierversion: any,langue: any,datecreation: any): Observable<any> {
     const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
     const data = { 

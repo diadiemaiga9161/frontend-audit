@@ -76,7 +76,7 @@
                   <td>
                     <ul class="list-unstyled hstack gap-1 mb-0">
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
-                        <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary">
+                        <a (click)="scrollModal(scrollable, { idAudites: Audite?.id })" class="btn btn-sm btn-soft-primary">
                           <i class="mdi mdi-eye-outline"></i>
                         </a>
                       </li>
@@ -117,6 +117,63 @@
   </div>
 </div>
 
+
+<ng-template #scrollable let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Détails du Rapport</h5>
+   
+    
+    <button type="button" class="btn-close" (click)="modal.hide()"></button>
+    
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Site</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="auditesParId">
+          <th scope="row">{{ auditesParId?.id }}</th>
+          <td>{{ auditesParId?.audite }}</td>
+          <td>{{ auditesParId?.siteaudite }}</td>
+          <td>{{ auditesParId?.description }}</td>
+          <td>
+            <ul class="list-unstyled hstack gap-1 mb-0">
+              <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
+                <a routerLink="/jobs/details" class="btn btn-sm btn-soft-primary">
+                  <i class="mdi mdi-eye-outline"></i>
+                </a>
+              </li>
+              <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
+                <a href="javascript:void(0);" class="btn btn-sm btn-soft-info">
+                  <i class="mdi mdi-pencil-outline"></i>
+                </a>
+              </li>
+              <li data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer">
+                <a href="javascript:void(0);" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger">
+                  <i class="mdi mdi-delete-outline"></i>
+                </a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody> 
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Quitter</button>
+    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+    <button (click)="rapportid1()" class="btn btn-primary">
+      Télécharger Le rapport 
+    </button>
+</div>
+</ng-template>
 
  
 

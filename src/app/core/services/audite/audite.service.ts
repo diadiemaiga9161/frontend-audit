@@ -72,7 +72,11 @@ AfficherListAudites(): Observable<any> {
   const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
   return this.http.get(`${URL_BASE}audites/afficher`, { headers });  // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
 }
-
+  // Méthode pour afficher la liste des rapport  par id
+  AfficherListAuditesid(id: number): Observable<any> {
+    const headers = this.getHeaders(); // Obtient les en-têtes avec le jeton d'accès
+    return this.http.get(`${URL_BASE}audites/afficherparid/${id}`, { headers }); // Effectue une requête GET vers l'API avec les en-têtes d'autorisation
+}
 
 
 ajouter(data: any): Observable<any> {

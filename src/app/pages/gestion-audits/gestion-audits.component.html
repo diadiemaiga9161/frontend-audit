@@ -44,15 +44,15 @@
                   </td>
                   <td>{{ gestion?.tauxConformite }}</td>
                   <td>{{ gestion?.conformite }}</td>
-                  <td>{{ gestion?.dateDebut | date: 'yyyy-MM-dd' }}</td>
-                  <td>{{ gestion?.dateFin | date: 'yyyy-MM-dd'}}</td>
+                  <td>{{ gestion?.dateDebut }}</td>
+                  <td>{{ gestion?.dateFin }}</td>
                   <td>{{ gestion?.typeAudit }}</td>
                   <!-- <td>{{ gestion?.referentiel }}</td> -->
                   <td>
                     <ul class="list-unstyled hstack gap-1 mb-0">
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Voir">
-                        <a (click)="scrollModal(scrollable, { idRapport: rapport?.id })" class="btn btn-sm btn-soft-primary"><i
-                            class="mdi mdi-eye-outline"></i></a>
+                        <a (click)="scrollModal(scrollable, { idGestion: gestion?.id })"
+                          class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
                       </li>
                       <li data-bs-toggle="tooltip" data-bs-placement="top" title="Modifier">
                         <a (click)="varyingModal(varying,'Mary')" class="btn btn-sm btn-soft-info"><i
@@ -100,67 +100,87 @@
   </div>
   <!-- end row -->
 </div>
-  <!-- Modifier et supprimer -->
+<!-- Modifier et supprimer -->
 <ng-template #varying role="document" let-modal>
   <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalRef?.hide()"></button>
+    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+      (click)="modalRef?.hide()"></button>
   </div>
   <div class="modal-body">
-      <div class="mb-3">
-          <label for="recipient-name" class="col-form-label">Recipient:</label>
-          <input type="text" class="form-control" id="recipient-name" value="@mdo" [(ngModel)]="name">
-      </div>
-      <div class="mb-3">
-          <label for="message-text" class="col-form-label">Message:</label>
-          <textarea class="form-control" id="message-text"></textarea>
-      </div>
+    <div class="mb-3">
+      <label for="recipient-name" class="col-form-label">Recipient:</label>
+      <input type="text" class="form-control" id="recipient-name" value="@mdo" [(ngModel)]="name">
+    </div>
+    <div class="mb-3">
+      <label for="message-text" class="col-form-label">Message:</label>
+      <textarea class="form-control" id="message-text"></textarea>
+    </div>
   </div>
   <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Close</button>
-      <button type="button" class="btn btn-primary">Send message</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Close</button>
+    <button type="button" class="btn btn-primary">Send message</button>
   </div>
 </ng-template>
-  <!-- fin  -->
-  <!-- Afficher   -->
+<!-- fin  -->
+
+
+
+<!-- Afficher   -->
 <ng-template #scrollable let-modal>
   <div class="modal-header">
-    <h5 class="modal-title">Détails du Rapport</h5>
-   
-    
-    <button type="button" class="btn-close" (click)="modal.hide()"></button>
-    
+    <h5 class="modal-title">Détails de l'Audit</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modalRef?.hide()"></button>
   </div>
   <div class="modal-body">
     <table class="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Titre</th>
+          <th>Audit ID</th>
+          <th>Audités</th>
+          <th>Référentiel</th>
+          <!-- <th>Statut</th>
+          <th>Taux de Conformité</th>
+          <th>Conformité</th>
           <th>Date Début</th>
           <th>Date Fin</th>
-          <th>Remarques</th>
-          <th>Subjection</th>
+          <th>Type d'Audit</th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="rapportParId">
-          <td>{{rapportParId.id}}</td>
-          <td>{{rapportParId.titre}}</td>
-          <td>{{rapportParId.datedebut | date: 'yyyy-MM-dd'}}</td>
-          <td>{{rapportParId.datefin | date: 'yyyy-MM-dd'}}</td>
-          <td>{{rapportParId.remarques}}</td>
-          <td>{{rapportParId.subjection}}</td>
+        <!-- Vérifiez si `gestionParId` est bien défini avant d'afficher les détails -->
+        <tr *ngIf="gestionParId">
+          <td>{{ gestionParId?.id }}</td>
+          <td>{{ gestionParId?.audites }}</td>
+          <td>{{ gestionParId?.referentiel }}</td>
+          <td>
+            <span class="badge" 
+                  [ngStyle]="{
+                    'color': '#ffffff', 
+                    'font-size': '15px', 
+                    'background-color': (gestionParId?.statutAudit === 'Terminer') ? 'green' : 'blue'
+                  }">
+              {{ gestionParId?.statutAudit }}
+            </span>
+          </td>
+          <td>{{ gestionParId?.tauxConformite }}</td>
+          <td>{{ gestionParId?.conformite }}</td>
+          <td>{{ gestionParId?.dateDebut }}</td>
+          <td>{{ gestionParId?.dateFin }}</td>
+          <td>{{ gestionParId?.typeAudit }}</td>
+        </tr>
+        <!-- Ajouter un cas où `gestionParId` est nul, pour montrer un message d'attente ou d'erreur -->
+        <tr *ngIf="!gestionParId">
+          <td colspan="9" class="text-center">Chargement des détails de l'audit...</td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalRef?.hide()">Close</button>
-    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-    <button (click)="rapportid1()" class="btn btn-primary">
-      Télécharger Le rapport 
-    </button>
-</div>
+    <button type="button" class="btn btn-secondary" (click)="modalRef?.hide()">Fermer</button>
+    <button (click)="rapportid1()" class="btn btn-primary">Télécharger le rapport</button>
+  </div>
 </ng-template>
-  <!-- fin  -->
+
+
+<!-- fin  -->

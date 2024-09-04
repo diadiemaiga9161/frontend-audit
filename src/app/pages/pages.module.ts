@@ -35,6 +35,7 @@ import { GestionAuditsComponent } from './gestion-audits/gestion-audits.componen
 import { ApexComponent } from './chart/apex/apex.component';
 import { AjouterCampagneComponent } from './ajouter-campagne/ajouter-campagne.component';
 import { CampagnesComponent } from './campagnes/campagnes.component';
+import { ReferentielsComponent } from './referentiels/referentiels.component';
 
 @NgModule({
   declarations: [ProfilComponent,AjouterAuditComponent,AjouterAuditeComponent,GestionAuditsComponent,AjouterReferentielsComponent,ApexComponent,AjouterCampagneComponent,CampagnesComponent],

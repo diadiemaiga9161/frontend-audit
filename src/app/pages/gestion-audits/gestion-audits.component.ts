@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuditService } from 'src/app/core/services/audit/audit.service';
 import { AuditeService } from 'src/app/core/services/audite/audite.service';
@@ -15,11 +15,18 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
   styleUrls: ['./gestion-audits.component.scss']
 })
 export class GestionAuditsComponent {
+  @ViewChild('scrollable') scrollable: TemplateRef<any>; // Référence au template du modal
+  modalRef: BsModalRef;
+  gestion: any[] = [];
   id: any;
   User: any;
   form: any;
+  audit:any[] = []; 
+  auditModal: TemplateRef<any>;
+  auditParId: any;
+  gestionParId: any;
   // gestion:any;
-  gestion: any[] = []; // Stocke toutes les audites
+  // gestion: any[] = []; // Stocke toutes les audites
   auditesEncours: any[] = []; // Pour stocker les audites avec statut 'encore'
   referentiel: any;
   audites:any;
@@ -30,7 +37,7 @@ export class GestionAuditsComponent {
   typeAudit:any;
     // bread crumb items
     breadCrumbItems: Array<{}>;
-    modalRef?: BsModalRef;
+    // modalRef: BsModalRef;
     config:any = {
       backdrop: true,
       ignoreBackdropClick: true
@@ -41,6 +48,7 @@ export class GestionAuditsComponent {
     private storageService: StorageService,
     private gestionauditesService: GestionauditesService,
     private authService: AuthService,
+    private auditService: AuditService,
     private modalService: BsModalService,
 
     private router: Router,
@@ -68,6 +76,16 @@ export class GestionAuditsComponent {
      console.log(this.gestion);
    });
 
+  //  openAuditModal(this.id: number): void {
+  //   this.auditService.AfficherListAuditid(id).subscribe(data => {
+  //     this.audit = data;
+  //     // this.scrollModal(this.rapportModal); // Ouvrir le modal avec le template
+  //   }, error => {
+  //     console.error('Erreur lors de la récupération du rapport :', error);
+  //   });
+  // }
+
+ 
    this.gestionauditesService.ListesGestionaudit().subscribe(data => {
     this.gestion = data;
 
@@ -78,8 +96,55 @@ export class GestionAuditsComponent {
     console.log('Audites en cours:', this.auditesEncours);
   });
    }
-   
+  //  scrollModal(template: TemplateRef<any>, context: any) {
+  //   const id = context.idAudit; // Récupère l'ID du rapport depuis le contexte
+  //   this.auditService.AfficherListAuditid(id).subscribe(
+  //     (data) => {
+  //       this.gestion = [data]; // Assure que 'gestion' est un tableau contenant les détails de l'audit
+  //       this.modalRef = this.modalService.show(template, { class: 'modal-lg' }); // Ouvre le modal avec les données
+  //     },
+  //     (error) => {
+  //       console.error('Erreur lors de la récupération des données de l\'audit', error);
+  //     }
+  //   );
+  // }
+  openGestionModal(id: number): void {
+    this.gestionauditesService.ListesGestionauditid(id).subscribe(data => {
+      this.gestion = data;
+      // this.scrollModal(this.rapportModal); // Ouvrir le modal avec le template
+    }, error => {
+      console.error('Erreur lors de la récupération du rapport :', error);
+    });
+  }
 
+  
+  scrollModal(template: TemplateRef<any>, data: any) {
+    // Ouvrir le modal avec le template passé en paramètre
+    this.modalRef = this.modalService.show(template, this.config);
+  
+    // Utiliser les données pour récupérer le rapport
+    console.log('Données reçues:', data);
+  
+    // Réinitialiser `gestionParId` avant de faire l'appel au service pour éviter l'affichage d'anciennes données
+    this.gestionParId = null;
+  
+    // Récupérer les détails de l'audit via le service
+    this.gestionauditesService.ListesGestionauditid(data.idGestion).subscribe(
+      response => {
+        this.gestionParId = response[0];
+        // Les données du rapport sont maintenant disponibles pour le modal
+        console.log('Détails du audit:', response);
+      },
+      error => {
+        console.error('Erreur lors de la récupération de l\'audit :', error);
+        // Ajouter ici une gestion des erreurs, comme l'affichage d'un message à l'utilisateur
+      }
+    );
+  }
+  
+  
+
+  
   /**
    * Open modal
    * @param content modal content
@@ -141,13 +206,13 @@ export class GestionAuditsComponent {
     this.modalRef = this.modalService.show(centerDataModal);
   }
 
-  /**
-   * Open scroll modal
-   * @param scrollDataModal scroll modal data
-   */
-  scrollModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, this.config);
-  }
+  // /**
+  //  * Open scroll modal
+  //  * @param scrollDataModal scroll modal data
+  //  */
+  // scrollModal(template: TemplateRef<any>) {
+  //   this.modalRef = this.modalService.show(template, this.config);
+  // }
 
   /**
    * Static modal
